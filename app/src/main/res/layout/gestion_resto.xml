@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonAjouteResto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ajouter Resto" />
+
+        <Button
+            android:id="@+id/buttonModifResto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modifier Resto" />
+
+        <Button
+            android:id="@+id/buttonSupResto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Supprimer Resto" />
+
+        <Button
+            android:id="@+id/buttonConsultResto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Consulter Resto" />
+
+        <Button
+            android:id="@+id/buttonRetour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Retour" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

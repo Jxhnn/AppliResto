@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonConsAime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Consulter et aimer" />
+
+        <Button
+            android:id="@+id/buttonCrit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Critiques" />
+
+        <Button
+            android:id="@+id/buttonModifProfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modifier Profil" />
+
+        <Button
+            android:id="@+id/buttonDeco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deconnexion" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
