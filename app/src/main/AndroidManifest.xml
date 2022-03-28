@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ConsulterResto" android:exported="true"></activity>
+        <activity android:name=".activity.ConsulterResto"></activity>
+        <activity android:name=".controleur.consulter_utilisateur" android:exported="true"></activity>
+        <activity android:name=".controleur.Supprimer_utilisateur" android:exported="true"></activity>
     </application>
 
 </manifest>

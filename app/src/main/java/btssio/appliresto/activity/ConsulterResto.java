@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class ConsulterResto extends AppCompatActivity {
     private String adrR,coordR,descR,horairesR;
     private Spinner nomResto;
     private ArrayList<Resto> lesRestos;
+    private Button retour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,10 @@ public class ConsulterResto extends AppCompatActivity {
         coordResto = (TextView) findViewById(R.id.textViewCoord);
         descResto = (TextView) findViewById(R.id.textViewDescResto);
         horairesResto = (TextView) findViewById(R.id.textViewHorairesResto);
+
+        retour = (Button) findViewById(R.id.buttonRetour);
+        retour.setOnClickListener((View.OnClickListener) this);
+
         RestoDAO restoDao = new RestoDAO(this);
         lesRestos = restoDao.getRestos();
         ArrayAdapter<Resto> spinResto = new ArrayAdapter<Resto>(this.getBaseContext(),android.R.layout.simple_spinner_item);
@@ -74,5 +80,6 @@ public class ConsulterResto extends AppCompatActivity {
 
     public void onClick(View v){
         Intent retour = new Intent(ConsulterResto.this,GestionResto.class);
+        startActivity(retour);
     }
 }

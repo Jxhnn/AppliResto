@@ -1,5 +1,6 @@
 package btssio.appliresto.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,5 +45,10 @@ public class AjouterResto extends AppCompatActivity {
                 restoDao.addResto(unResto);
             };
         });
+    }
+
+    public void onClick(View v){
+        Intent retour = new Intent(AjouterResto.this,GestionResto.class);
+        startActivity(retour);
     }
 }
