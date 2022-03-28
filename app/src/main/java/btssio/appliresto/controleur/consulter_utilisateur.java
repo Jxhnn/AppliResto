@@ -22,7 +22,7 @@ import btssio.appliresto.modele.UserDAO;
 public class consulter_utilisateur extends Activity{
     private ListView listeU;
     private ArrayList<User> lesUsers=new ArrayList<User>();
-    private UserDAO userDao = new UserDAO();
+    private UserDAO userDao = new UserDAO(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
