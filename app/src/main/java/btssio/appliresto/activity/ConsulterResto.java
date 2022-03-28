@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import btssio.appliresto.R;
 import btssio.appliresto.modele.Resto;
@@ -19,6 +20,7 @@ import btssio.appliresto.modele.RestoDAO;
 
 public class ConsulterResto extends AppCompatActivity {
     private TextView adrResto,coordResto,descResto,horairesResto;
+    private String adrR,coordR,descR,horairesR;
     private Spinner nomResto;
     private ArrayList<Resto> lesRestos;
 
@@ -43,7 +45,17 @@ public class ConsulterResto extends AppCompatActivity {
         nomResto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("log",Integer.toString(i)+" "+lesRestos.get(i).toString());
+                Log.d("log",""+lesRestos.get(i).getNomR());
+                adrR=lesRestos.get(i).getNumAdrR()+" "+lesRestos.get(i).getVoieAdrR()+" "+lesRestos.get(i).getVilleR()+" "+lesRestos.get(i).getCpR();
+                coordR=lesRestos.get(i).getLatitudeDegR()+" "+lesRestos.get(i).getLongitudeDegR();
+                descR=lesRestos.get(i).getDescR();
+                horairesR=lesRestos.get(i).getHorairesR();
+                horairesR=lesRestos.get(i).getHorairesR();
+
+                adrResto.setText(adrR);
+                coordResto.setText(coordR);
+                descResto.setText(descR);
+                horairesResto.setText(horairesR);
             }
 
             @Override
@@ -51,6 +63,10 @@ public class ConsulterResto extends AppCompatActivity {
 
             }
         });
+
+        Calendar cal = Calendar.getInstance();
+
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.consulter_resto);
