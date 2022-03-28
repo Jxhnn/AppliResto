@@ -2,6 +2,7 @@ package btssio.appliresto.modele;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -30,7 +31,17 @@ public class UserDAO {
         }
 
         return unUser;
-}
+    }
+
+    public boolean verify(User user) {
+        Cursor out;
+        out = accesBD.getReadableDatabase().rawQuery("SELECT * FROM utilisateur WHERE mailU = '" + user.getMailU() + "' AND mdpU = '" + user.getMdpU() + "';", null);
+
+        Log.d("DEBUG QUERY:", "SELECT * FROM utilisateur WHERE mailU = '" + user.getMailU() + "' AND mdpU = '" + user.getMdpU() + "';");
+
+        if (out.getCount() > 0) return true;
+        else return false;
+    }
 
     public ArrayList<User> getUsers(){
         Cursor curseur;

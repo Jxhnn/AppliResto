@@ -91,6 +91,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
         db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('jj.soueix@gmail.com','$1$zvN5hYMIJqJSDJF.','drskott');");
         db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('mathieu.capliez@gmail.com','seSzpoUAQgIl.','pich');");
         db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('nicolas.harispe@gmail.com','$1NDSFQSdfqdfsT.','Nico40');");
+        db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('john@john.com','toto','Toto64000');");
 
 
 /*

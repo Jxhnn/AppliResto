@@ -11,27 +11,36 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import btssio.appliresto.R;
+import btssio.appliresto.modele.User;
+import btssio.appliresto.modele.UserDAO;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText passEdit, mailEdit;
-    Button loginButton;
+    private EditText passEdit, mailEdit;
+    private Button loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        passEdit = findViewById(R.id.editTextId);
-        mailEdit = findViewById(R.id.editTextMdp);
+        mailEdit = findViewById(R.id.editTextId);
+        passEdit = findViewById(R.id.editTextMdp);
+
         loginButton = findViewById(R.id.buttonConnect);
 
-        loginButton.setOnClickListener(loginEvent);
+        loginButton.setOnClickListener(this);
     }
 
-    private View.OnClickListener loginEvent = new View.OnClickListener() {
-        public void onClick(View v) {
-            Log.d("DEBUG: ", "Login button clicked");
+    @Override
+    public void onClick(View view) {
+        if (view == loginButton) {
+            // Log.d("DEBUG:", "Email : " + passEdit.getText().toString());
+            User thisUser = new User(mailEdit.getText().toString(), passEdit.getText().toString(), "");
+            UserDAO userManager = new UserDAO(this);
+
+            boolean out = userManager.verify(thisUser);
+            Log.d("LOGIN DEBUG: ", "" + out);
         }
-    };
+    }
 }
