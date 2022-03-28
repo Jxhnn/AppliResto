@@ -1,9 +1,9 @@
 package btssio.appliresto.controleur;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.doridomenge.meilleurresto.R;
+import btssio.appliresto.R;
 
 public class MainActivity extends AppCompatActivity {
 
