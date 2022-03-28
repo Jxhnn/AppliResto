@@ -53,8 +53,11 @@ public class User {
 
     @Override
     public String toString() {
-        return "Utilisateur: mail : "+ mailU + "\n"+
-                "pseudo: "+pseudoU;
+        return "User{" +
+                "mailU='" + mailU + '\'' +
+                ", mdpU='" + mdpU + '\'' +
+                ", pseudoU='" + pseudoU + '\'' +
+                '}';
     }
 
 
