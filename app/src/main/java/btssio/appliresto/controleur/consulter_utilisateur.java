@@ -8,11 +8,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.micksouloumiac1.projectrestpropre.R;
-import com.example.micksouloumiac1.projectrestpropre.modele.User;
-import com.example.micksouloumiac1.projectrestpropre.modele.UserDAO;
+import btssio.appliresto.R;
 
 import java.util.ArrayList;
+
+import btssio.appliresto.modele.User;
+import btssio.appliresto.modele.UserDAO;
 
 /**
  * Created by mick.souloumiac1 on 22/03/2022.
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 public class consulter_utilisateur extends Activity{
     private ListView listeU;
     private ArrayList<User> lesUsers=new ArrayList<User>();
-    private UserDAO userDao = new UserDAO(this);
+    private UserDAO userDao = new UserDAO();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
