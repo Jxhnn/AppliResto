@@ -39,7 +39,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
             + " 	mailU text, "
             + " 	aime boolean, "
             + " 	primary key (idR,mailU), "
-            + " 	foreign key(idR) references resto(idR) "
+            + " 	foreign key(idR) references resto(idR), "
             + " 	foreign key(mailU) references utilisateur(mailU) "
             + " ); ";
 
@@ -49,7 +49,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
             + " 	note integer, "
             + " 	commentaire text, "
             + " 	primary key (idR,mailU), "
-            + " 	foreign key(idR) references resto(idR) "
+            + " 	foreign key(idR) references resto(idR), "
             + " 	foreign key(mailU) references utilisateur(mailU) "
             + " );";
 
@@ -58,7 +58,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
             + " 	cheminP text, "
             + " 	idR integer, "
             + " 	primary key (idP), "
-            + " 	foreign key(idR) references resto(idR), "
+            + " 	foreign key(idR) references resto(idR) "
             + " ); ";
 
     public BD_SQLiteOpenHelper(Context context, String name, CursorFactory factory, int version) {
@@ -70,18 +70,22 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
-        db.execSQL(creaTableResto);
+
         db.execSQL(creaTableUtilisateur);
+        db.execSQL(creaTableResto);
         db.execSQL(creaTableCritiquer);
         db.execSQL(creaTableAimer);
         db.execSQL(creaTablePhoto);
 
-        db.execSQL("insert into utlisateur (mailU,mdpU,pseudoU) values('alex.garat@gmail.com','$1$zvN5hYSQSQDFUIQSdufUQSDFznHF5osT.','@lex');");
-        db.execSQL("insert into utlisateur (mailU,mdpU,pseudoU) values('jj.soueix@gmail.com','$1$zvN5hYMI$SDFGSDFGJqJSDJF.','drskott');");
-        db.execSQL("insert into utlisateur (mailU,mdpU,pseudoU) values('mathieu.capliez@gmail.com','seSzpoUAQgIl.','pich');");
-        db.execSQL("insert into utlisateur (mailU,mdpU,pseudoU) values('nicolas.harispe@gmail.com','$1$zvNDSFQSdfqsDfQsdfsT.','Nico40');");
+        Log.d("log","base de test cree");
 
 
+        db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('alex.garat@gmail.com','$1$zvN5IQSdunHF5osT.','@lex');");
+        db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('jj.soueix@gmail.com','$1$zvN5hYMIJqJSDJF.','drskott');");
+        db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('mathieu.capliez@gmail.com','seSzpoUAQgIl.','pich');");
+        db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('nicolas.harispe@gmail.com','$1NDSFQSdfqdfsT.','Nico40');");
+
+/*
         db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(1, 'lentrepote', '2', 'rue Maurice Ravel', 33000, 'Bordeaux', 44.7948, -0.58754, 'description','11h45||14h30 18h||22h');");
         db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(2, 'le bar du charcutier', '30', 'rue Parlement Sainte-Catherine', 33000, 'Bordeaux', NULL, NULL, 'description', '11h45||14h30 18h||22h');");
         db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(3, 'Sapporo', '33', 'rue Saint Rémi', 33000, 'Bordeaux', NULL, NULL, 'Le Sapporo propose à ses clients de délicieux plats typiques japonais.','11h45||14h30 18h||22h');");
@@ -99,7 +103,8 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
         db.execSQL("insert into critique(idR,mailU,note,commentaire) values(5,'mathieu.capliez@gmail.com',4,'Très bon accueil.');");
         db.execSQL("insert into critique(idR,mailU,note,commentaire) values(6,'jj.soueix@gmail.com',1,'À éviter...');");
         db.execSQL("insert into critique(idR,mailU,note,commentaire) values(4,'alex.garat@gmail.com',2,'bof.');");
-        Log.d("log","base de test cree");
+
+*/
 
     }
 
