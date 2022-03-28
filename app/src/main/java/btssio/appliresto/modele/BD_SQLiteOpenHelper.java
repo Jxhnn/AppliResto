@@ -16,7 +16,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
     private String creaTableResto="create table resto ( "
             + " 	idR integer, "
             + " 	nomR text, "
-            + " 	numAdrR text, "
+            + " 	numAdrR integer, "
             + " 	voieAdrR text, "
             + " 	cpR integer, "
             + " 	villeR text, "

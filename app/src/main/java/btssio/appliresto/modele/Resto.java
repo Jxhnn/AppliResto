@@ -8,7 +8,7 @@ public class Resto {
 
     private int idR;
     private String nomR;
-    private String numAdrR;
+    private int numAdrR;
     private String voieAdrR;
     private int cpR;
     private String villeR;
@@ -17,8 +17,22 @@ public class Resto {
     private String descR;
     private String horairesR;
 
-    public Resto(int idR, String nomR, String numAdrR, String voieAdrR, int cpR, String villeR, float latitudeDegR, float longitudeDegR, String descR, String horairesR) {
+    public Resto(int idR, String nomR, int numAdrR, String voieAdrR, int cpR, String villeR, float latitudeDegR, float longitudeDegR, String descR, String horairesR) {
         this.idR = idR;
+        this.nomR = nomR;
+        this.numAdrR = numAdrR;
+        this.voieAdrR = voieAdrR;
+        this.cpR = cpR;
+        this.villeR = villeR;
+        this.latitudeDegR = latitudeDegR;
+        this.longitudeDegR = longitudeDegR;
+        this.descR = descR;
+        this.horairesR = horairesR;
+
+
+    }
+
+    public Resto(String nomR, int numAdrR, String voieAdrR, int cpR, String villeR, float latitudeDegR, float longitudeDegR, String descR, String horairesR) {
         this.nomR = nomR;
         this.numAdrR = numAdrR;
         this.voieAdrR = voieAdrR;
@@ -48,11 +62,11 @@ public class Resto {
         this.nomR = nomR;
     }
 
-    public String getNumAdrR() {
+    public int getNumAdrR() {
         return numAdrR;
     }
 
-    public void setNumAdrR(String numAdrR) {
+    public void setNumAdrR(int numAdrR) {
         this.numAdrR = numAdrR;
     }
 
