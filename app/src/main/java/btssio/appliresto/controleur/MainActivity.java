@@ -3,6 +3,7 @@ package btssio.appliresto.controleur;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,7 +41,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             UserDAO userManager = new UserDAO(this);
 
             boolean out = userManager.verify(thisUser);
-            Log.d("LOGIN DEBUG: ", "" + out);
+
+            if (out) Toast.makeText(this, "Authentifié !", Toast.LENGTH_SHORT).show();
+            else Toast.makeText(this, "Les identifiants sont invalides !", Toast.LENGTH_LONG).show();
+
+            // Intent mainMenu = new Intent(this, )
+
         }
     }
 }
