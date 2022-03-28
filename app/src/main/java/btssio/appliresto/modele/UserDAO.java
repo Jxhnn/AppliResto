@@ -10,7 +10,6 @@ import java.util.ArrayList;
  */
 
 public class UserDAO {
-
     private static String base = "BDresto";
     private static int version = 1;
     BD_SQLiteOpenHelper accesBD;
@@ -18,7 +17,7 @@ public class UserDAO {
 
     public UserDAO(Context ct){ accesBD = new BD_SQLiteOpenHelper(ct, base, null, version);
 
-}
+    }
 
     public User getUser(String mail, String pseudoU){
         User unUser=null;
@@ -30,7 +29,7 @@ public class UserDAO {
         }
 
         return unUser;
-}
+    }
 
     public ArrayList<User> getUsers(){
         Cursor curseur;
@@ -54,6 +53,4 @@ public class UserDAO {
         }
         return  listeUser;
     }
-
-
 }

@@ -10,11 +10,6 @@ public class User {
     private String mdpU;
     private String pseudoU;
 
-    public User(String mailU, String mdpU) {
-        this.mailU = mailU;
-        this.mdpU = mdpU;
-    }
-
 
 
     public User(String mailU, String mdpU, String pseudoU) {
@@ -22,10 +17,13 @@ public class User {
         this.mdpU = mdpU;
         this.pseudoU = pseudoU;
 
-
-
-
     }
+
+    public User(String mailU, String pseudoU) {
+        this.mailU = mailU;
+        this.pseudoU = pseudoU;
+    }
+
 
     public String getMailU() {
         return mailU;
