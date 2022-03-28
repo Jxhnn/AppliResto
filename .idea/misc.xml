@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Souloumiac/Android Projects/AppliResto/app/src/main/res/layout/activity_main.xml" value="0.18489583333333334" />
+        <entry key="..\:/Souloumiac/Android Projects/AppliResto/app/src/main/res/layout/consulter_utilisateur.xml" value="0.18489583333333334" />
+        <entry key="..\:/Souloumiac/Android Projects/AppliResto/app/src/main/res/layout/supprimer_utilisater.xml" value="0.25" />
+        <entry key="..\:/Souloumiac/Android Projects/AppliResto/app/src/main/res/layout/supprimer_utilisateur.xml" value="0.18489583333333334" />
         <entry key="..\:/THOMAS John/AndroidProjects/AppliResto/app/src/main/res/layout/activity_main.xml" value="0.18489583333333334" />
         <entry key="..\:/THOMAS John/AndroidProjects/AppliResto/app/src/main/res/layout/consulter_resto_user.xml" value="0.18489583333333334" />
         <entry key="..\:/THOMAS John/AndroidProjects/AppliResto/app/src/main/res/layout/consulter_utilisateur.xml" value="0.18489583333333334" />
