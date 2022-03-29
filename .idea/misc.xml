@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/2021-2022/AppliRestoGit/app/src/main/res/layout/ajouter_resto.xml" value="0.3582427536231884" />
+        <entry key="..\:/2021-2022/AppliRestoGit/app/src/main/res/layout/consulter_resto_user.xml" value="0.14629629629629629" />
+        <entry key="..\:/2021-2022/AppliRestoGit/app/src/main/res/layout/gestion_resto.xml" value="0.33" />
         <entry key="..\:/2021-2022/AppliRestoGit/app/src/main/res/layout/supprimer_resto.xml" value="0.3582427536231884" />
         <entry key="..\:/Souloumiac/Android Projects/AppliResto/app/src/main/res/layout/activity_main.xml" value="0.18489583333333334" />
         <entry key="..\:/Souloumiac/Android Projects/AppliResto/app/src/main/res/layout/consulter_utilisateur.xml" value="0.18489583333333334" />
@@ -13,17 +15,10 @@
         <entry key="..\:/THOMAS John/AndroidProjects/AppliResto/app/src/main/res/layout/consulter_resto_user.xml" value="0.18489583333333334" />
         <entry key="..\:/THOMAS John/AndroidProjects/AppliResto/app/src/main/res/layout/consulter_utilisateur.xml" value="0.18489583333333334" />
         <entry key="..\:/THOMAS John/AndroidProjects/AppliResto/app/src/main/res/layout/login_user.xml" value="0.27691107644305774" />
-        <entry key="..\:/Users/John/StudioProjects/AppliResto/app/src/main/res/drawable-anydpi/back_icon.xml" value="0.1985" />
-        <entry key="..\:/Users/John/StudioProjects/AppliResto/app/src/main/res/drawable/bg_gradient_drawable.xml" value="0.1985" />
-        <entry key="..\:/Users/John/StudioProjects/AppliResto/app/src/main/res/drawable/button_background.xml" value="0.1985" />
-        <entry key="..\:/Users/John/StudioProjects/AppliResto/app/src/main/res/drawable/login_card_background.xml" value="0.1985" />
-        <entry key="..\:/Users/John/StudioProjects/AppliResto/app/src/main/res/drawable/login_edit_background.xml" value="0.1985" />
-        <entry key="..\:/Users/John/StudioProjects/AppliResto/app/src/main/res/font/lato.xml" value="0.21822916666666667" />
-        <entry key="..\:/Users/John/StudioProjects/AppliResto/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
