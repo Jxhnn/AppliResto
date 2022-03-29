@@ -1,7 +1,9 @@
 package btssio.appliresto.modele;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -33,14 +35,37 @@ public class UserDAO {
         return unUser;
     }
 
+    public String getUsernameFromEmail(String email) {
+        User unUser=null;
+        Cursor curseur;
+        curseur=accesBD.getReadableDatabase().rawQuery("select pseudoU from utilisateur where mailU = '" + email + "';",null);
+        if (curseur.getCount() == 1) {
+            curseur.moveToFirst();
+            return curseur.getString(0);
+        }
+        return "Unknown";
+    }
+
     public boolean verify(User user) {
         Cursor out;
         out = accesBD.getReadableDatabase().rawQuery("SELECT * FROM utilisateur WHERE mailU = '" + user.getMailU() + "' AND mdpU = '" + user.getMdpU() + "';", null);
 
-        Log.d("DEBUG QUERY:", "SELECT * FROM utilisateur WHERE mailU = '" + user.getMailU() + "' AND mdpU = '" + user.getMdpU() + "';");
+        // Log.d("DEBUG QUERY:", "SELECT * FROM utilisateur WHERE mailU = '" + user.getMailU() + "' AND mdpU = '" + user.getMdpU() + "';");
 
         if (out.getCount() > 0) return true;
         else return false;
+    }
+
+    public long createUser(User user) {
+        SQLiteDatabase db = accesBD.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("mailU", user.getMailU());
+        values.put("pseudoU", user.getPseudoU());
+        values.put("mdpU", user.getMdpU());
+
+        long ret = db.insert("Utilisateur", null, values);
+        return ret;
     }
 
     public ArrayList<User> getUsers(){

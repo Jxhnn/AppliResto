@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppliResto">
 
-        <activity android:name=".controleur.MainActivity"
+        <activity android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,6 +20,8 @@
         <activity android:name=".controleur.consulter_utilisateur" android:exported="true"></activity>
         <activity android:name=".controleur.Supprimer_utilisateur" android:exported="true"></activity>
         <activity android:name=".activity.GestionResto" android:exported="true"></activity>
+        <activity android:name=".activity.MainMenu" android:exported="true"></activity>
+        <activity android:name=".activity.RegisterMenu" android:exported="true"></activity>
     </application>
 
 </manifest>

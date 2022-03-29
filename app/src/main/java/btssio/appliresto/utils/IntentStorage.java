@@ -7,6 +7,7 @@ import java.util.Vector;
 /**
  * @Author: Jxhnn / Namirasoft
  * @Date: 08/12/2021
+ * How to use : https://stackoverflow.com/a/62406575
  */
 public class IntentStorage {
     // Number
