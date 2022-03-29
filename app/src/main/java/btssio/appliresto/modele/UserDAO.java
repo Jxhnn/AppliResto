@@ -2,6 +2,7 @@ package btssio.appliresto.modele;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
  */
 
 public class UserDAO {
+
     private static String base = "BDresto";
     private static int version = 1;
     BD_SQLiteOpenHelper accesBD;
@@ -17,7 +19,7 @@ public class UserDAO {
 
     public UserDAO(Context ct){ accesBD = new BD_SQLiteOpenHelper(ct, base, null, version);
 
-    }
+}
 
     public User getUser(String mail, String pseudoU){
         User unUser=null;
@@ -29,6 +31,16 @@ public class UserDAO {
         }
 
         return unUser;
+    }
+
+    public boolean verify(User user) {
+        Cursor out;
+        out = accesBD.getReadableDatabase().rawQuery("SELECT * FROM utilisateur WHERE mailU = '" + user.getMailU() + "' AND mdpU = '" + user.getMdpU() + "';", null);
+
+        Log.d("DEBUG QUERY:", "SELECT * FROM utilisateur WHERE mailU = '" + user.getMailU() + "' AND mdpU = '" + user.getMdpU() + "';");
+
+        if (out.getCount() > 0) return true;
+        else return false;
     }
 
     public ArrayList<User> getUsers(){
@@ -53,4 +65,6 @@ public class UserDAO {
         }
         return  listeUser;
     }
+
+
 }
