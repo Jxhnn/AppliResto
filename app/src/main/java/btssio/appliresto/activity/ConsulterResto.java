@@ -78,8 +78,10 @@ public class ConsulterResto extends AppCompatActivity {
         setContentView(R.layout.consulter_resto);
     }
 
-    public void onClick(View v){
-        Intent retour = new Intent(ConsulterResto.this,GestionResto.class);
-        startActivity(retour);
-    }
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            Intent retour = new Intent(ConsulterResto.this, GestionResto.class);
+            startActivity(retour);
+        }
+    };
 }

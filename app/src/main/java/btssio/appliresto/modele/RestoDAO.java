@@ -40,6 +40,18 @@ public class RestoDAO {
         return ret;
     }
 
+    public Resto getUnResto(int id){
+        Cursor curseur;
+        Resto unResto = null;
+        String req="SELECT * FROM resto WHERE idR="+id;
+        curseur = accesBD.getReadableDatabase().rawQuery(req,null);
+        if (curseur.getCount() > 0) {
+            curseur.moveToFirst();
+            unResto = new Resto(id,curseur.getString(1),curseur.getInt(2),curseur.getString(3),curseur.getInt(4),curseur.getString(5),curseur.getFloat(6),curseur.getFloat(7),curseur.getString(8),curseur.getString(9));
+        }
+        return unResto;
+    }
+
     public void supprimerResto(Resto unResto){
         Cursor curseur;
         String req="DELETE FROM resto WHERE idR="+unResto.getIdR()+";";
