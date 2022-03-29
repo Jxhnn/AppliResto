@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().hide();
 
 
-
+        // https://www.youtube.com/watch?v=96QhUk0uid4&ab_channel=PraffulLachhwani
 
         mailEdit = findViewById(R.id.editTextId);
         passEdit = findViewById(R.id.editTextPass);
