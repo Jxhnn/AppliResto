@@ -22,10 +22,10 @@ public class UserDAO {
     private static int version = 1;
     BD_SQLiteOpenHelper accesBD;
 
+    public UserDAO(Context ct) {
+        accesBD = new BD_SQLiteOpenHelper(ct, base, null, version);
+    }
 
-    public UserDAO(Context ct){ accesBD = new BD_SQLiteOpenHelper(ct, base, null, version);
-
-}
 
     public long updateUser(User newUser, String mailU){
         long ret;
@@ -38,6 +38,7 @@ public class UserDAO {
 
         return ret;
     }
+
 
     public User getUser(String mail, String pseudoU){
         User unUser=null;
@@ -89,6 +90,12 @@ public class UserDAO {
         String req="select * from utilisateur;";
         curseur=accesBD.getReadableDatabase().rawQuery(req,null);
         return  cursorToUserArrayList(curseur);
+    }
+
+    public void suppUser(String mailU){
+        SQLiteDatabase bd = accesBD.getWritableDatabase();
+        bd.rawQuery("DELETE from Utilisateur where mailU='"+mailU+"';",null);
+
     }
 
     public ArrayList<User> cursorToUserArrayList(Cursor curseur){

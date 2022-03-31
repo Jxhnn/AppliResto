@@ -22,7 +22,9 @@
         <activity android:name=".activity.GestionResto" android:exported="true"></activity>
         <activity android:name=".activity.MainMenu" android:exported="true"></activity>
         <activity android:name=".activity.RegisterMenu" android:exported="true"></activity>
-        <activity android:name=".activity.ConsulterUser$ConsulterUser" />
+        <activity android:name=".activity.AjouterResto" android:exported="true"></activity>
+        <activity android:name=".activity.SupprimerResto" android:exported="true"></activity>
+        <activity android:name=".activity.ModifierResto" android:exported="true"></activity>
     </application>
 
 </manifest>

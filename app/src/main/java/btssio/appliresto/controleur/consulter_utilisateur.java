@@ -30,7 +30,7 @@ public class consulter_utilisateur extends Activity{
         setContentView(R.layout.consulter_utilisateur);
 
 
-        listeU=(ListView) findViewById(R.id.consultUtil);
+        listeU=(ListView) findViewById(R.id.listUtilisateur);
         lesUsers = userDao.getUsers();
 
         ArrayAdapter monadapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lesUsers);

@@ -19,7 +19,7 @@ import btssio.appliresto.R;
 import btssio.appliresto.modele.Resto;
 import btssio.appliresto.modele.RestoDAO;
 
-public class ConsulterResto extends AppCompatActivity {
+public class ConsulterResto extends AppCompatActivity implements View.OnClickListener{
     private TextView adrResto,coordResto,descResto,horairesResto;
     private String adrR,coordR,descR,horairesR;
     private Spinner nomResto;
@@ -28,6 +28,8 @@ public class ConsulterResto extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.consulter_resto);
 
         nomResto = (Spinner) findViewById(R.id.spinnerNomResto);
         adrResto = (TextView) findViewById(R.id.textViewAdresseRes);
@@ -35,8 +37,8 @@ public class ConsulterResto extends AppCompatActivity {
         descResto = (TextView) findViewById(R.id.textViewDescResto);
         horairesResto = (TextView) findViewById(R.id.textViewHorairesResto);
 
-        retour = (Button) findViewById(R.id.buttonRetour);
-        retour.setOnClickListener((View.OnClickListener) this);
+        retour = (Button) findViewById(R.id.btnRetour);
+        retour.setOnClickListener(this);
 
         RestoDAO restoDao = new RestoDAO(this);
         lesRestos = restoDao.getRestos();
@@ -71,17 +73,10 @@ public class ConsulterResto extends AppCompatActivity {
         });
 
         Calendar cal = Calendar.getInstance();
-
-
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.consulter_resto);
     }
 
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            Intent retour = new Intent(ConsulterResto.this, GestionResto.class);
-            startActivity(retour);
-        }
-    };
+    public void onClick(View v) {
+        Intent retour = new Intent(ConsulterResto.this, GestionResto.class);
+        startActivity(retour);
+    }
 }

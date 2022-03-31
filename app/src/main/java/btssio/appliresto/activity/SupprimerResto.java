@@ -17,7 +17,7 @@ import btssio.appliresto.R;
 import btssio.appliresto.modele.Resto;
 import btssio.appliresto.modele.RestoDAO;
 
-public class SupprimerResto extends AppCompatActivity {
+public class SupprimerResto extends AppCompatActivity implements View.OnClickListener{
 
     private Spinner nomResto;
     private ArrayList<Resto> lesRestos;
@@ -32,10 +32,10 @@ public class SupprimerResto extends AppCompatActivity {
         setContentView(R.layout.supprimer_resto);
 
 
-        retour = (Button) findViewById(R.id.buttonRetour);
+        retour = (Button) findViewById(R.id.btnRetour);
         sup = (Button) findViewById(R.id.buttonSup);
-        retour.setOnClickListener((View.OnClickListener) this);
-        sup.setOnClickListener((View.OnClickListener)this);
+        retour.setOnClickListener(this);
+        sup.setOnClickListener(this);
 
 
         nomResto = (Spinner) findViewById(R.id.spinnerNomResto);
@@ -70,19 +70,19 @@ public class SupprimerResto extends AppCompatActivity {
 
     }
 
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.buttonRetour:
-                    Intent retour = new Intent(SupprimerResto.this, GestionResto.class);
-                    startActivity(retour);
-                    break;
-                case R.id.buttonSup:
-                    Resto unResto = restoDao.getUnResto(idResto);
-                    restoDao.supprimerResto(unResto);
-                    break;
-            }
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnRetour:
+                Intent retour = new Intent(SupprimerResto.this, GestionResto.class);
+                startActivity(retour);
+                break;
+            case R.id.buttonSup:
+                Resto unResto = restoDao.getUnResto(idResto);
+                restoDao.supprimerResto(unResto.getIdR());
+                Intent oui = new Intent(SupprimerResto.this, SupprimerResto.class);
+                startActivity(oui);
+                break;
         }
-    };
+    }
 }
 
