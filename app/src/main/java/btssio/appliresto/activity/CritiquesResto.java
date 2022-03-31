@@ -80,7 +80,7 @@ public class CritiquesResto extends Activity {
             @Override
             public void onClick(View v) {
                 doSave();
-                Critique uneCritique = new Critique(spinResto, /* mail de l'utilisateur connecté */,  listeResto.get(spinResto.getSelectedItemPosition()).getNomR()); EditCritiques.getText().toString();
+                Critique uneCritique = new Critique(spinResto,/* mail de l'utilisateur connecté */,  listeResto.get(spinResto.getSelectedItemPosition()).getNomR()); EditCritiques.getText().toString();
                 CritiqueDAO uneCritiqueDAO;
                 uneCritiqueDAO = new CritiqueDAO(context);
                 uneCritiqueDAO.addCritique(uneCritique);

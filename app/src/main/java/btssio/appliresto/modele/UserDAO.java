@@ -22,10 +22,10 @@ public class UserDAO {
     private static int version = 1;
     BD_SQLiteOpenHelper accesBD;
 
-    public UserDAO(Context ct){
-        accesBD = new BD_SQLiteOpenHelper(ct, base, null, version);
-    }
 
+    public UserDAO(Context ct){ accesBD = new BD_SQLiteOpenHelper(ct, base, null, version);
+
+}
 
     public long updateUser(User newUser, String mailU){
         long ret;
@@ -38,15 +38,6 @@ public class UserDAO {
 
         return ret;
     }
-
-    private static String base = "BDresto";
-    private static int version = 1;
-    BD_SQLiteOpenHelper accesBD;
-
-
-    public UserDAO(Context ct){ accesBD = new BD_SQLiteOpenHelper(ct, base, null, version);
-
-}
 
     public User getUser(String mail, String pseudoU){
         User unUser=null;
