@@ -25,7 +25,7 @@ public class GestionResto extends AppCompatActivity {
         supp = (Button) findViewById(R.id.buttonSupResto);
         modif = (Button) findViewById(R.id.buttonModifResto);
         consulter = (Button) findViewById(R.id.buttonConsultResto);
-        retour =(Button) findViewById(R.id.buttonRetour);
+        retour =(Button) findViewById(R.id.btnRetour);
 
         ajouter.setOnClickListener((View.OnClickListener) this);
         supp.setOnClickListener((View.OnClickListener) this);
@@ -56,7 +56,7 @@ public class GestionResto extends AppCompatActivity {
                     Intent sup = new Intent(GestionResto.this, SupprimerResto.class);
                     startActivity(sup);
                 break;
-                case R.id.buttonRetour:
+                case R.id.btnRetour:
                     Intent retour = new Intent(GestionResto.this, GestionResto.class);
                     startActivity(retour);
                 break;
