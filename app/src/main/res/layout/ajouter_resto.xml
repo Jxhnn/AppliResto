@@ -42,7 +42,7 @@
                         android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/editTextNomResto"
+                        android:id="@+id/new_pseudoU"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -65,7 +65,7 @@
                         android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/editTextNumAdr"
+                        android:id="@+id/lblmdpU"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -248,7 +248,7 @@
                         android:text="Ajouter" />
 
                     <Button
-                        android:id="@+id/buttonRetour"
+                        android:id="@+id/btnRetour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

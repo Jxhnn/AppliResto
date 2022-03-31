@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ConsulterResto"></activity>
+        <activity android:name=".activity.CritiquesResto" android:exported="true"></activity>
     </application>
 
 </manifest>
