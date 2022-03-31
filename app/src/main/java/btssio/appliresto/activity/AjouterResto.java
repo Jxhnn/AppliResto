@@ -12,7 +12,7 @@ import btssio.appliresto.R;
 import btssio.appliresto.modele.Resto;
 import btssio.appliresto.modele.RestoDAO;
 
-public class AjouterResto extends AppCompatActivity {
+public class AjouterResto extends AppCompatActivity implements View.OnClickListener{
     private EditText nomResto, numAdr, voieR, villeR, cpR, latR, longR, descR, horaireR;
     private Button enregistreResto,retour;
     private RestoDAO restoDao=new RestoDAO(this);
@@ -35,14 +35,13 @@ public class AjouterResto extends AppCompatActivity {
         horaireR = (EditText) findViewById(R.id.editTextHorai);
 
         enregistreResto = (Button) findViewById(R.id.buttonAjouR);
-        enregistreResto.setOnClickListener((View.OnClickListener) this);
+        enregistreResto.setOnClickListener(this);
 
         retour = (Button) findViewById(R.id.buttonRetour);
-        retour.setOnClickListener((View.OnClickListener)this);
+        retour.setOnClickListener(this);
 
     }
 
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.buttonAjouR:
@@ -55,5 +54,4 @@ public class AjouterResto extends AppCompatActivity {
                 break;
             }
         }
-    };
 }
