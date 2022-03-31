@@ -21,7 +21,7 @@ public class RestoDAO {
         accesBD = new BD_SQLiteOpenHelper(ct, base, null, version);
     }
 
-    private long addResto(Resto unResto){
+    public long addResto(Resto unResto){
         long ret;
         SQLiteDatabase bd = accesBD.getWritableDatabase();
 
@@ -40,13 +40,25 @@ public class RestoDAO {
         return ret;
     }
 
-    private void supprimerResto(Resto unResto){
+    public Resto getUnResto(int id){
+        Cursor curseur;
+        Resto unResto = null;
+        String req="SELECT * FROM resto WHERE idR="+id;
+        curseur = accesBD.getReadableDatabase().rawQuery(req,null);
+        if (curseur.getCount() > 0) {
+            curseur.moveToFirst();
+            unResto = new Resto(id,curseur.getString(1),curseur.getInt(2),curseur.getString(3),curseur.getInt(4),curseur.getString(5),curseur.getFloat(6),curseur.getFloat(7),curseur.getString(8),curseur.getString(9));
+        }
+        return unResto;
+    }
+
+    public void supprimerResto(Resto unResto){
         Cursor curseur;
         String req="DELETE FROM resto WHERE idR="+unResto.getIdR()+";";
         curseur = accesBD.getReadableDatabase().rawQuery(req,null);
     }
 
-    private void modifierResto(Resto unResto){
+    public void modifierResto(Resto unResto){
 
         Cursor curseur;
         String req="Update resto SET nomR="+unResto.getNomR()+",numAdrR="+unResto.getNumAdrR()+",voieAdrR="+unResto.getVoieAdrR()+",cpR="+unResto.getCpR()+", villeR="+unResto.getVilleR()+",latitudeDegR="+unResto.getLatitudeDegR()+",longitudeDegR="+unResto.getLongitudeDegR()+",descR="+unResto.getDescR()+",horairesR="+unResto.getHorairesR()+" WHERE idR="+unResto.getIdR()+";";
@@ -64,7 +76,7 @@ public class RestoDAO {
         ArrayList<Resto> listeRelever = new ArrayList<Resto>();
         int idR;
         String nomR;
-        String numAdrR;
+        int numAdrR;
         String voieAdrR;
         int cpC;
         String villeR;
@@ -77,7 +89,7 @@ public class RestoDAO {
         while (!curseur.isAfterLast()) {
             idR = curseur.getInt(0);
             nomR = curseur.getString(1);
-            numAdrR = curseur.getString(2);
+            numAdrR = curseur.getInt(2);
             voieAdrR = curseur.getString(3);
             cpC = curseur.getInt(4);
             villeR = curseur.getString(5);
