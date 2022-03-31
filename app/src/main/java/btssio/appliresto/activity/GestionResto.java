@@ -57,7 +57,7 @@ public class GestionResto extends AppCompatActivity {
                     startActivity(sup);
                 break;
                 case R.id.btnRetour:
-                    Intent retour = new Intent(GestionResto.this, GestionResto.class);
+                    Intent retour = new Intent(GestionResto.this, MenuAdmin.class);
                     startActivity(retour);
                 break;
             }
