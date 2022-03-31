@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -19,17 +20,17 @@ import btssio.appliresto.R;
 import btssio.appliresto.modele.Resto;
 import btssio.appliresto.modele.RestoDAO;
 
-public class ConsulterResto extends AppCompatActivity implements View.OnClickListener{
+public class AimerResto extends AppCompatActivity implements View.OnClickListener{
     private TextView adrResto,coordResto,descResto,horairesResto;
     private String adrR,coordR,descR,horairesR;
     private Spinner nomResto;
     private ArrayList<Resto> lesRestos;
+    private CheckBox aimer;
     private Button retour;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.consulter_resto);
 
         nomResto = (Spinner) findViewById(R.id.spinnerNomResto);
         adrResto = (TextView) findViewById(R.id.textViewAdresseRes);
@@ -73,10 +74,16 @@ public class ConsulterResto extends AppCompatActivity implements View.OnClickLis
         });
 
         Calendar cal = Calendar.getInstance();
+
+
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.consulter_resto);
     }
 
+
     public void onClick(View v) {
-        Intent retour = new Intent(ConsulterResto.this, GestionResto.class);
-        startActivity(retour);
+        //Intent retour = new Intent(AimerResto.this, GestionResto.class);
+        //startActivity(retour);
     }
 }

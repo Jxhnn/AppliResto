@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -52,17 +53,32 @@ public class RestoDAO {
         return unResto;
     }
 
-    public void supprimerResto(Resto unResto){
-        Cursor curseur;
-        String req="DELETE FROM resto WHERE idR="+unResto.getIdR()+";";
-        curseur = accesBD.getReadableDatabase().rawQuery(req,null);
+    public long supprimerResto(int idR){
+        long ret;
+        SQLiteDatabase bd = accesBD.getWritableDatabase();
+        ret= bd.delete("resto", "idR="+idR,null);
+        Log.d("1","2");
+        return ret;
     }
 
-    public void modifierResto(Resto unResto){
+    public long modifierResto(Resto unResto){
+        long ret;
 
-        Cursor curseur;
-        String req="Update resto SET nomR="+unResto.getNomR()+",numAdrR="+unResto.getNumAdrR()+",voieAdrR="+unResto.getVoieAdrR()+",cpR="+unResto.getCpR()+", villeR="+unResto.getVilleR()+",latitudeDegR="+unResto.getLatitudeDegR()+",longitudeDegR="+unResto.getLongitudeDegR()+",descR="+unResto.getDescR()+",horairesR="+unResto.getHorairesR()+" WHERE idR="+unResto.getIdR()+";";
-        curseur = accesBD.getReadableDatabase().rawQuery(req,null);
+        ContentValues resto = new ContentValues();
+        resto.put("nomR",unResto.getNomR());
+        resto.put("numAdrR",unResto.getNomR());
+        resto.put("voieAdrR",unResto.getNomR());
+        resto.put("cpR",unResto.getNomR());
+        resto.put("villeR",unResto.getNomR());
+        resto.put("latitudeDegR",unResto.getNomR());
+        resto.put("longitudeDegR",unResto.getNomR());
+        resto.put("descR",unResto.getNomR());
+        resto.put("horairesR",unResto.getNomR());
+
+        SQLiteDatabase bd = accesBD.getWritableDatabase();
+        ret= bd.update("resto",resto,"idR="+unResto.getIdR(),null);
+        Log.d("1","2");
+        return ret;
     }
 
     public ArrayList<Resto> getRestos(){

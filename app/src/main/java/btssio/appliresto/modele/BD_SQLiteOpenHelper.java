@@ -23,7 +23,6 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
             + " 	latitudeDegR float, "
             + " 	longitudeDegR float, "
             + " 	descR text, "
-            + "     photoPrincipal text, "
             + " 	horairesR text, "
             + " 	primary key (idR) "
             + " ); ";
@@ -94,7 +93,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
         db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('nicolas.harispe@gmail.com','$1NDSFQSdfqdfsT.','Nico40');");
         db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('john@john.com','toto','Toto64000');");
 
-        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR, photoPrincipal) values(1, 'lentrepote', '2', 'rue Maurice Ravel', 33000, 'Bordeaux', 44.7948, -0.58754, 'description','11h45||14h30 18h||22h', 'https://picsum.photos/536/354');");
+
 /*
 
 

@@ -13,7 +13,7 @@
         tools:layout_editor_absoluteY="322dp">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonResto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Gestion Resto" />

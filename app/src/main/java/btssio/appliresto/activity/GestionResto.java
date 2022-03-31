@@ -10,13 +10,13 @@ import btssio.appliresto.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class GestionResto extends AppCompatActivity {
+public class GestionResto extends AppCompatActivity implements View.OnClickListener{
 
     private Button ajouter,supp,modif,consulter,retour;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gestion_resto);
 
@@ -27,40 +27,39 @@ public class GestionResto extends AppCompatActivity {
         consulter = (Button) findViewById(R.id.buttonConsultResto);
         retour =(Button) findViewById(R.id.btnRetour);
 
-        ajouter.setOnClickListener((View.OnClickListener) this);
-        supp.setOnClickListener((View.OnClickListener) this);
-        modif.setOnClickListener((View.OnClickListener) this);
-        consulter.setOnClickListener((View.OnClickListener) this);
-        retour.setOnClickListener((View.OnClickListener) this);
+        ajouter.setOnClickListener(this);
+        supp.setOnClickListener(this);
+        modif.setOnClickListener(this);
+        consulter.setOnClickListener(this);
+        retour.setOnClickListener(this);
 
 
     }
 
 
-    public final View.OnClickListener onClickListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.buttonAjouteResto:
-                    Intent ajouter = new Intent(GestionResto.this, AjouterResto.class);
-                    startActivity(ajouter);
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.buttonAjouteResto:
+                Intent ajouterR = new Intent(GestionResto.this, AjouterResto.class);
+                startActivity(ajouterR);
                 break;
-                case R.id.buttonConsultResto:
-                    Intent cons = new Intent(GestionResto.this, ConsulterResto.class);
-                    startActivity(cons);
+            case R.id.buttonConsultResto:
+                Intent cons = new Intent(GestionResto.this, ConsulterResto.class);
+                startActivity(cons);
                 break;
-                case R.id.buttonModifResto:
-                    Intent modif = new Intent(GestionResto.this, ModifierResto.class);
-                    startActivity(modif);
+            case R.id.buttonModifResto:
+                Intent modifR = new Intent(GestionResto.this, ModifierResto.class);
+                startActivity(modifR);
                 break;
-                case R.id.buttonSupResto:
-                    Intent sup = new Intent(GestionResto.this, SupprimerResto.class);
-                    startActivity(sup);
+            case R.id.buttonSupResto:
+                Intent sup = new Intent(GestionResto.this, SupprimerResto.class);
+                startActivity(sup);
                 break;
-                case R.id.btnRetour:
-                    Intent retour = new Intent(GestionResto.this, GestionResto.class);
-                    startActivity(retour);
+            case R.id.btnRetour:
+                Intent retourR = new Intent(GestionResto.this, GestionResto.class);
+                startActivity(retourR);
                 break;
-            }
         }
-    };
+    }
 }

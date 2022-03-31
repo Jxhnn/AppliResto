@@ -92,6 +92,15 @@ public class UserDAO {
         return  cursorToUserArrayList(curseur);
     }
 
+    public long suppUser(String mailU){
+        long ret;
+        SQLiteDatabase bd = accesBD.getWritableDatabase();
+        ret=bd.delete("utilisateur","mailU='"+mailU+"'",null);
+
+        return ret;
+
+    }
+
     public ArrayList<User> cursorToUserArrayList(Cursor curseur){
         ArrayList<User> listeUser=new ArrayList<User>();
         String mail;
