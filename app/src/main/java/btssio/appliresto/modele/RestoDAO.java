@@ -100,6 +100,7 @@ public class RestoDAO {
         float longitudeDegR;
         String descR;
         String horairesR;
+        String url;
 
         curseur.moveToFirst();
         while (!curseur.isAfterLast()) {
@@ -113,7 +114,8 @@ public class RestoDAO {
             longitudeDegR = curseur.getFloat(7);
             descR = curseur.getString(8);
             horairesR = curseur.getString(9);
-            listeRelever.add(new Resto(idR,nomR, numAdrR, voieAdrR, cpC,villeR,latitudeDegR,longitudeDegR,descR,horairesR, ""));
+            url = curseur.getString(10);
+            listeRelever.add(new Resto(idR,nomR, numAdrR, voieAdrR, cpC,villeR,latitudeDegR,longitudeDegR,descR,horairesR, url));
             curseur.moveToNext();
         }
         return listeRelever;

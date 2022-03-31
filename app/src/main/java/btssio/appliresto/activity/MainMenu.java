@@ -3,11 +3,14 @@ package btssio.appliresto.activity;
 import android.app.ListActivity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
@@ -23,7 +26,6 @@ import btssio.appliresto.utils.WebUtils;
 public class MainMenu extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView accountIcon;
-    private ListView restaurantsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +44,34 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
         restorants = restoManager.getRestos();
 
         String[] nomRestaurants = new String[restorants.size()];
-        Drawable[] imageRestaurants = new Drawable[restorants.size()];
+        String[] descRestaurants = new String[restorants.size()];
+        String[] imageRestaurants = new String[restorants.size()];
+
+        WebUtils webUtils = new WebUtils();
 
         for (int i = 0; i <= restorants.size() - 1; i++) {
             nomRestaurants[i] = restorants.get(i).getNomR();
-            imageRestaurants[i] = WebUtils.LoadImageFromWebOperations(restorants.get(i).getPhotoPrincipal());
+            descRestaurants[i] = restorants.get(i).getDescR();
+            imageRestaurants[i] = restorants.get(i).getPhotoPrincipal();
+
         }
+
+        ListView listView = (ListView)findViewById(R.id.restaurantsList);
+        RestoAdapter restoAdapter = new RestoAdapter(this, nomRestaurants, descRestaurants, imageRestaurants);
+        listView.setAdapter(restoAdapter);
 
         // https://stackoverflow.com/a/8353790
         // https://java2blog.com/android-custom-listview-with-images-text-example/
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Toast.makeText(getApplicationContext(),"You Selected "+nomRestaurants[position]+ " as Restaurant",Toast.LENGTH_SHORT).show();        }
+        });
+
     }
 
+    // TODO: Move onto Utils
     private void showPopup(View v) {
         PopupMenu popup = new PopupMenu(this, v);
         MenuInflater inflater = popup.getMenuInflater();
