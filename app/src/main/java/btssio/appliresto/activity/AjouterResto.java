@@ -37,7 +37,7 @@ public class AjouterResto extends AppCompatActivity implements View.OnClickListe
         enregistreResto = (Button) findViewById(R.id.buttonAjouR);
         enregistreResto.setOnClickListener(this);
 
-        retour = (Button) findViewById(R.id.buttonRetour);
+        retour = (Button) findViewById(R.id.btnRetour);
         retour.setOnClickListener(this);
 
     }
@@ -48,7 +48,7 @@ public class AjouterResto extends AppCompatActivity implements View.OnClickListe
                     Resto unResto= new Resto(String.valueOf(nomResto),Integer.parseInt(String.valueOf(numAdr)),String.valueOf(voieR),Integer.parseInt(String.valueOf(cpR)),String.valueOf(villeR),Integer.parseInt(String.valueOf(latR)),Integer.parseInt(String.valueOf(longR)),String.valueOf(descR),String.valueOf(horaireR));
                     restoDao.addResto(unResto);
                 break;
-                case R.id.buttonRetour:
+                case R.id.btnRetour:
                     Intent retour = new Intent(AjouterResto.this, GestionResto.class);
                     startActivity(retour);
                 break;

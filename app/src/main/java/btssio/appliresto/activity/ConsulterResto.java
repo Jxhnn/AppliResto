@@ -37,7 +37,7 @@ public class ConsulterResto extends AppCompatActivity implements View.OnClickLis
         descResto = (TextView) findViewById(R.id.textViewDescResto);
         horairesResto = (TextView) findViewById(R.id.textViewHorairesResto);
 
-        retour = (Button) findViewById(R.id.buttonRetour);
+        retour = (Button) findViewById(R.id.btnRetour);
         retour.setOnClickListener(this);
 
         RestoDAO restoDao = new RestoDAO(this);

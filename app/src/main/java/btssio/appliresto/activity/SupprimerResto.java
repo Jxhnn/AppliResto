@@ -32,7 +32,7 @@ public class SupprimerResto extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.supprimer_resto);
 
 
-        retour = (Button) findViewById(R.id.buttonRetour);
+        retour = (Button) findViewById(R.id.btnRetour);
         sup = (Button) findViewById(R.id.buttonSup);
         retour.setOnClickListener(this);
         sup.setOnClickListener(this);
@@ -72,7 +72,7 @@ public class SupprimerResto extends AppCompatActivity implements View.OnClickLis
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.buttonRetour:
+            case R.id.btnRetour:
                 Intent retour = new Intent(SupprimerResto.this, GestionResto.class);
                 startActivity(retour);
                 break;
