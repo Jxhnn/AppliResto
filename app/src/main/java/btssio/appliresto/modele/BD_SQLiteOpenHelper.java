@@ -36,7 +36,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
             + " ); ";
 
 
-    private String creaTableAimer = " create table annee ( "
+    private String creaTableAimer = " create table aimer ( "
             + " 	idR integer, "
             + " 	mailU text, "
             + " 	aime boolean, "
@@ -94,7 +94,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
         db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('john@john.com','toto','Toto64000');");
 
 
-/*
+
 
 
         db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(1, 'lentrepote', '2', 'rue Maurice Ravel', 33000, 'Bordeaux', 44.7948, -0.58754, 'description','11h45||14h30 18h||22h');");
@@ -103,7 +103,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
         db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(4, 'Cidrerie du fronton', NULL, 'Place du Fronton', 64210, 'Arbonne', NULL, NULL, 'description','11h45||14h30 18h||22h');");
         db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(5, 'Agadir', '3', 'Rue Sainte-Catherine', 64100, 'Bayonne', NULL, NULL, 'description','11h45||14h30 18h||22h');");
         db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(6, 'Le Bistrot Sainte Cluque', '9', 'Rue Hugues', 64100, 'Bayonne', NULL, NULL, 'description','11h45||14h30 18h||22h');");
-
+/*
 
         db.execSQL("insert into aimer (idR,mailU,aime) values(1,'mathieu.capliez@gmail.com',1);");
         db.execSQL("insert into aimer (idR,mailU,aime) values(2,'nicolas.harispe@gmail.com',1);");
