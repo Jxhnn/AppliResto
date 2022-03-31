@@ -248,7 +248,7 @@
                         android:text="Ajouter" />
 
                     <Button
-                        android:id="@+id/buttonRetour"
+                        android:id="@+id/btnRetour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
