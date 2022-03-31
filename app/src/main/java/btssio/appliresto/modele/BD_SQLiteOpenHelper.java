@@ -36,7 +36,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
             + " ); ";
 
 
-    private String creaTableAimer = " create table annee ( "
+    private String creaTableAimer = " create table aimer ( "
             + " 	idR integer, "
             + " 	mailU text, "
             + " 	aime boolean, "

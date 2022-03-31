@@ -92,9 +92,12 @@ public class UserDAO {
         return  cursorToUserArrayList(curseur);
     }
 
-    public void suppUser(String mailU){
+    public long suppUser(String mailU){
+        long ret;
         SQLiteDatabase bd = accesBD.getWritableDatabase();
-        bd.rawQuery("DELETE from Utilisateur where mailU='"+mailU+"';",null);
+        ret=bd.delete("utilisateur","mailU='"+mailU+"'",null);
+
+        return ret;
 
     }
 

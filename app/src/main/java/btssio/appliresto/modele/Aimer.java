@@ -36,7 +36,7 @@ public class Aimer {
     }
 
 
-    public boolean isAime() {
+    public boolean getAime() {
         return aime;
     }
 
