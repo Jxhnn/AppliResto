@@ -20,7 +20,7 @@ import btssio.appliresto.R;
 import btssio.appliresto.modele.Resto;
 import btssio.appliresto.modele.RestoDAO;
 
-public class AimerResto extends AppCompatActivity {
+public class AimerResto extends AppCompatActivity implements View.OnClickListener{
     private TextView adrResto,coordResto,descResto,horairesResto;
     private String adrR,coordR,descR,horairesR;
     private Spinner nomResto;
@@ -39,7 +39,7 @@ public class AimerResto extends AppCompatActivity {
         horairesResto = (TextView) findViewById(R.id.textViewHorairesResto);
 
         retour = (Button) findViewById(R.id.btnRetour);
-        retour.setOnClickListener((View.OnClickListener) this);
+        retour.setOnClickListener(this);
 
         RestoDAO restoDao = new RestoDAO(this);
         lesRestos = restoDao.getRestos();
@@ -81,10 +81,9 @@ public class AimerResto extends AppCompatActivity {
         setContentView(R.layout.consulter_resto);
     }
 
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            Intent retour = new Intent(ConsulterResto.this, GestionResto.class);
-            startActivity(retour);
-        }
-    };
+
+    public void onClick(View v) {
+        //Intent retour = new Intent(AimerResto.this, GestionResto.class);
+        //startActivity(retour);
+    }
 }
