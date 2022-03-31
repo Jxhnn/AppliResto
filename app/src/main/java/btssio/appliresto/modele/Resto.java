@@ -16,8 +16,9 @@ public class Resto {
     private float longitudeDegR;
     private String descR;
     private String horairesR;
+    private String photoPrincipal;
 
-    public Resto(int idR, String nomR, int numAdrR, String voieAdrR, int cpR, String villeR, float latitudeDegR, float longitudeDegR, String descR, String horairesR) {
+    public Resto(int idR, String nomR, int numAdrR, String voieAdrR, int cpR, String villeR, float latitudeDegR, float longitudeDegR, String descR, String horairesR, String photoPrincipal) {
         this.idR = idR;
         this.nomR = nomR;
         this.numAdrR = numAdrR;
@@ -28,11 +29,12 @@ public class Resto {
         this.longitudeDegR = longitudeDegR;
         this.descR = descR;
         this.horairesR = horairesR;
+        this.photoPrincipal = photoPrincipal;
 
 
     }
 
-    public Resto(String nomR, int numAdrR, String voieAdrR, int cpR, String villeR, float latitudeDegR, float longitudeDegR, String descR, String horairesR) {
+    public Resto(String nomR, int numAdrR, String voieAdrR, int cpR, String villeR, float latitudeDegR, float longitudeDegR, String descR, String horairesR, String photoPrincipal) {
         this.nomR = nomR;
         this.numAdrR = numAdrR;
         this.voieAdrR = voieAdrR;
@@ -42,8 +44,7 @@ public class Resto {
         this.longitudeDegR = longitudeDegR;
         this.descR = descR;
         this.horairesR = horairesR;
-
-
+        this.photoPrincipal = photoPrincipal;
     }
 
     public int getIdR() {
@@ -124,6 +125,14 @@ public class Resto {
 
     public void setHorairesR(String horairesR) {
         this.horairesR = horairesR;
+    }
+
+    public String getPhotoPrincipal() {
+        return photoPrincipal;
+    }
+
+    public void setPhotoPrincipal(String photoPrincipal) {
+        this.photoPrincipal = photoPrincipal;
     }
 
     @Override

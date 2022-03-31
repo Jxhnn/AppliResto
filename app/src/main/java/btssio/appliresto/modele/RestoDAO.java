@@ -47,7 +47,7 @@ public class RestoDAO {
         curseur = accesBD.getReadableDatabase().rawQuery(req,null);
         if (curseur.getCount() > 0) {
             curseur.moveToFirst();
-            unResto = new Resto(id,curseur.getString(1),curseur.getInt(2),curseur.getString(3),curseur.getInt(4),curseur.getString(5),curseur.getFloat(6),curseur.getFloat(7),curseur.getString(8),curseur.getString(9));
+            unResto = new Resto(id,curseur.getString(1),curseur.getInt(2),curseur.getString(3),curseur.getInt(4),curseur.getString(5),curseur.getFloat(6),curseur.getFloat(7),curseur.getString(8),curseur.getString(9), "");
         }
         return unResto;
     }
@@ -97,7 +97,7 @@ public class RestoDAO {
             longitudeDegR = curseur.getFloat(7);
             descR = curseur.getString(8);
             horairesR = curseur.getString(9);
-            listeRelever.add(new Resto(idR,nomR, numAdrR, voieAdrR, cpC,villeR,latitudeDegR,longitudeDegR,descR,horairesR));
+            listeRelever.add(new Resto(idR,nomR, numAdrR, voieAdrR, cpC,villeR,latitudeDegR,longitudeDegR,descR,horairesR, ""));
             curseur.moveToNext();
         }
         return listeRelever;
