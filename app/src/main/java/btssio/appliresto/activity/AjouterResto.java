@@ -45,7 +45,7 @@ public class AjouterResto extends AppCompatActivity implements View.OnClickListe
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.buttonAjouR:
-                    Resto unResto= new Resto(String.valueOf(nomResto),Integer.parseInt(String.valueOf(numAdr)),String.valueOf(voieR),Integer.parseInt(String.valueOf(cpR)),String.valueOf(villeR),Integer.parseInt(String.valueOf(latR)),Integer.parseInt(String.valueOf(longR)),String.valueOf(descR),String.valueOf(horaireR));
+                    Resto unResto= new Resto(String.valueOf(nomResto),Integer.parseInt(String.valueOf(numAdr)),String.valueOf(voieR),Integer.parseInt(String.valueOf(cpR)),String.valueOf(villeR),Integer.parseInt(String.valueOf(latR)),Integer.parseInt(String.valueOf(longR)),String.valueOf(descR),String.valueOf(horaireR), "");
                     restoDao.addResto(unResto);
                 break;
                 case R.id.btnRetour:
