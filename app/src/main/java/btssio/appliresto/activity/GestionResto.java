@@ -2,13 +2,16 @@ package btssio.appliresto.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 
 import btssio.appliresto.R;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 
 public class GestionResto extends AppCompatActivity implements View.OnClickListener{
 
@@ -60,6 +63,38 @@ public class GestionResto extends AppCompatActivity implements View.OnClickListe
                 Intent retourR = new Intent(GestionResto.this, GestionResto.class);
                 startActivity(retourR);
                 break;
+        }
+    }
+
+    public static class MainMenu extends AppCompatActivity implements View.OnClickListener {
+
+        private ImageView accountIcon;
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.main_menu);
+            getSupportActionBar().hide();
+
+            accountIcon = findViewById(R.id.accountIcon);
+
+            accountIcon.setOnClickListener(this);
+        }
+
+        private void showPopup(View v) {
+            PopupMenu popup = new PopupMenu(this, v);
+            MenuInflater inflater = popup.getMenuInflater();
+            inflater.inflate(R.menu.main_option_menu, popup.getMenu());
+            popup.show();
+
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            if (view == accountIcon) {
+                showPopup(view);
+            }
         }
     }
 }

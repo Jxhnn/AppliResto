@@ -46,7 +46,7 @@ public class MenuAdmin extends Activity implements View.OnClickListener{
                 startActivity(i2);
                 break;
             case R.id.button3:
-                Intent i3=new Intent(MenuAdmin.this,MainMenu.class);
+                Intent i3=new Intent(MenuAdmin.this, GestionResto.MainMenu.class);
                 startActivity(i3);
                 break;
         }

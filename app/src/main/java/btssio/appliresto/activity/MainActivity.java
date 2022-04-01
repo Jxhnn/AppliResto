@@ -15,8 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import btssio.appliresto.R;
-import btssio.appliresto.activity.MainMenu;
-import btssio.appliresto.activity.RegisterMenu;
 import btssio.appliresto.modele.User;
 import btssio.appliresto.modele.UserDAO;
 import btssio.appliresto.utils.IntentStorage;
@@ -67,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String nickName = userManager.getUsernameFromEmail(thisUser.getMailU());
                 thisUser.setPseudoU(nickName);
 
-                Intent mainMenu = new Intent(this, MainMenu.class);
+                Intent mainMenu = new Intent(this, GestionResto.MainMenu.class);
                 IntentStorage.add(mainMenu, "LoggedUser", thisUser);
                 startActivity(mainMenu);
             }
