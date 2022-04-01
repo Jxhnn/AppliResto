@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String nickName = userManager.getUsernameFromEmail(thisUser.getMailU());
                 thisUser.setPseudoU(nickName);
 
-                Intent mainMenu = new Intent(this, GestionResto.MainMenu.class);
+                Intent mainMenu = new Intent(this, MainMenu.class);
                 IntentStorage.add(mainMenu, "LoggedUser", thisUser);
                 startActivity(mainMenu);
             }
