@@ -25,6 +25,7 @@
         <activity android:name=".activity.GestionResto$MainMenu" android:exported="true"></activity>
         <activity android:name=".activity.RegisterMenu" android:exported="true"></activity>
         <activity android:name=".activity.MenuAdmin" android:exported="true"></activity>
+        <activity android:name=".activity.ModifProfil" android:exported="true"></activity>
     </application>
 
 </manifest>

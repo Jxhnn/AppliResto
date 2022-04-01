@@ -1,6 +1,7 @@
 package btssio.appliresto.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +24,7 @@ import btssio.appliresto.R;
 import btssio.appliresto.modele.User;
 import btssio.appliresto.modele.UserDAO;
 
-public class CritiquesResto extends Activity {
+public class CritiquesResto extends Activity implements View.OnClickListener{
 
     private Spinner spinResto;
     private RadioGroup GroupNotes;
@@ -76,20 +77,34 @@ public class CritiquesResto extends Activity {
             }
         });
         // When button "Save" clicked.
-        this.btnValider.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doSave();
-                // Critique uneCritique = new Critique(spinResto, /* mail de l'utilisateur connecté */,  listeResto.get(spinResto.getSelectedItemPosition()).getNomR()); EditCritiques.getText().toString();
-                // CritiqueDAO uneCritiqueDAO;
-                // uneCritiqueDAO = new CritiqueDAO(context);
-                // uneCritiqueDAO.addCritique(uneCritique);
-            }
-        });
+        btnValider.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        doSave();
+        switch (v.getId()){
+            case R.id.btnValider:
+                //Critique uneCritique = new Critique(spinResto, /* mail de l'utilisateur connecté */,  listeResto.get(spinResto.getSelectedItemPosition()).getNomR()); EditCritiques.getText().toString();
+                //CritiqueDAO uneCritiqueDAO = new CritiqueDAO(this);
+                //uneCritiqueDAO.addCritique(uneCritique);
+            break;
+            case R.id.btnRetour:
+                Intent retour = new Intent(CritiquesResto.this, GestionResto.class);
+                startActivity(retour);
+                break;
+        }
+        // Critique uneCritique = new Critique(spinResto, /* mail de l'utilisateur connecté */,  listeResto.get(spinResto.getSelectedItemPosition()).getNomR()); EditCritiques.getText().toString();
+        // CritiqueDAO uneCritiqueDAO;
+        // uneCritiqueDAO = new CritiqueDAO(context);
+        // uneCritiqueDAO.addCritique(uneCritique);
     }
         // Radio group 1-5 pour mettre une note au resto selectionné
-        private void doSave()  {
+        private int doSave()  {
             int noteResto = this.GroupNotes.getCheckedRadioButtonId();
+            return noteResto;
         }
     }
+
+
 
