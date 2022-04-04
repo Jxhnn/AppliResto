@@ -1,10 +1,12 @@
 package btssio.appliresto.activity;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,7 +28,7 @@ import btssio.appliresto.modele.User;
 import btssio.appliresto.utils.IntentStorage;
 import btssio.appliresto.utils.WebUtils;
 
-public class MainMenu extends AppCompatActivity implements View.OnClickListener {
+public class MainMenu extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
     private ImageView accountIcon;
     private User loggedUser;
@@ -87,6 +89,8 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.main_option_menu, popup.getMenu());
         popup.show();
+        popup.setOnMenuItemClickListener(this);
+
     }
 
     @Override
@@ -101,5 +105,17 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
     protected void onDestroy() {
         IntentStorage.remove(getIntent());
         super.onDestroy();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+
+        if (item.getTitle().equals("Mon compte")) {
+            Intent personnalInfosMenu = new Intent(this, PersonnalInfosMenu.class);
+            IntentStorage.add(personnalInfosMenu, "LoggedUser", loggedUser);
+            startActivity(personnalInfosMenu);
+
+        }
+        return false;
     }
 }

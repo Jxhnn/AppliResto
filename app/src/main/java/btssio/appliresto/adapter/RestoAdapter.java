@@ -64,7 +64,7 @@ public class RestoAdapter extends ArrayAdapter implements View.OnClickListener {
         }
         imageFlag.setImageDrawable(b);
         likeButton.setOnClickListener(this);
-        likeButtons[likeButton.getId()] = position;
+        // likeButtons[likeButton.getId()] = position;
         imageFlag.setClipToOutline(true);
 
 
