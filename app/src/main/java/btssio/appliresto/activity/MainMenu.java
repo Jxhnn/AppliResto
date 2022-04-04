@@ -57,7 +57,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener,
         String[] nomRestaurants = new String[restorants.size()];
         String[] descRestaurants = new String[restorants.size()];
         String[] imageRestaurants = new String[restorants.size()];
-        int[] likeButtonsRestaurants = new int[restorants.size()];
+        int[] idRestaurants = new int[restorants.size()];
 
         WebUtils webUtils = new WebUtils();
 
@@ -65,11 +65,12 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener,
             nomRestaurants[i] = restorants.get(i).getNomR();
             descRestaurants[i] = restorants.get(i).getHorairesR();
             imageRestaurants[i] = restorants.get(i).getPhotoPrincipal();
-            likeButtonsRestaurants[i] = i;
+            idRestaurants[i] = restorants.get(i).getIdR();
         }
 
+
         ListView listView = (ListView)findViewById(R.id.restaurantsList);
-        RestoAdapter restoAdapter = new RestoAdapter(this, nomRestaurants, descRestaurants, imageRestaurants);
+        RestoAdapter restoAdapter = new RestoAdapter(this, nomRestaurants, descRestaurants, imageRestaurants, idRestaurants, listView);
         listView.setAdapter(restoAdapter);
 
         // https://stackoverflow.com/a/8353790
@@ -78,6 +79,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener,
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // view.findViewById(R.id.likeButton);
                 Toast.makeText(getApplicationContext(),"You Selected "+nomRestaurants[position]+ " as Restaurant",Toast.LENGTH_SHORT).show();        }
         });
 
@@ -115,6 +117,10 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener,
             IntentStorage.add(personnalInfosMenu, "LoggedUser", loggedUser);
             startActivity(personnalInfosMenu);
 
+        } else if (item.getTitle().equals("Déconnexion")) {
+            loggedUser = null;
+            Intent mainActivity = new Intent(this, MainActivity.class);
+            startActivity(mainActivity);
         }
         return false;
     }

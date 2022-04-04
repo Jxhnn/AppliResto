@@ -27,16 +27,31 @@ public class UserDAO {
     }
 
 
-    public long updateUser(User newUser, String mailU){
-        long ret;
+    public void updateUser(User newUser, String mailU) {
         SQLiteDatabase bd = accesBD.getWritableDatabase();
 
-        ContentValues value = new ContentValues();
-        value.put("pseudoU", newUser.getPseudoU());
-        value.put("mdpU", newUser.getMdpU());
-        ret = bd.update("User", null, "mailU" + " = " + mailU, null);
+        bd.execSQL("UPDATE utilisateur SET pseudoU = '" + newUser.getPseudoU()
+                + "'" + " WHERE mailU = '" + mailU + "'");
 
-        return ret;
+        bd.execSQL("UPDATE utilisateur SET mdpU = '" + newUser.getMdpU()
+                + "'" + " WHERE mailU = '" + mailU + "'");
+
+
+        bd.execSQL("UPDATE utilisateur SET mailU = '" + newUser.getMailU()
+                + "'" + " WHERE mailU = '" + mailU + "'");
+    }
+
+
+    public void updateUserWithoutPass(User newUser, String mailU){
+        SQLiteDatabase bd = accesBD.getWritableDatabase();
+
+        bd.execSQL("UPDATE utilisateur SET pseudoU = '" + newUser.getPseudoU()
+                + "'" + " WHERE mailU = '" + mailU + "'");
+
+
+        bd.execSQL("UPDATE utilisateur SET mailU = '" + newUser.getMailU()
+                + "'" + " WHERE mailU = '" + mailU + "'");
+
     }
 
 

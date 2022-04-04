@@ -89,4 +89,9 @@ public class AimerResto extends AppCompatActivity implements View.OnClickListene
             startActivity(retour);
         }
     };
+
+    @Override
+    public void onClick(View view) {
+
+    }
 }
