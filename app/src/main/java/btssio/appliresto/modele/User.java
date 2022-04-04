@@ -10,9 +10,9 @@ public class User {
     private String mdpU;
     private String pseudoU;
 
-    public User(String mailU, String mdpU) {
+    public User(String mailU, String pseudoU) {
         this.mailU = mailU;
-        this.mdpU = mdpU;
+        this.pseudoU = pseudoU;
     }
 
     public User(String mailU, String mdpU, String pseudoU) {
@@ -49,7 +49,6 @@ public class User {
     public String toString() {
         return "User{" +
                 "mailU='" + mailU + '\'' +
-                ", mdpU='" + mdpU + '\'' +
                 ", pseudoU='" + pseudoU + '\'' +
                 '}';
     }

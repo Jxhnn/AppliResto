@@ -15,8 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import btssio.appliresto.R;
-import btssio.appliresto.activity.MainMenu;
-import btssio.appliresto.activity.RegisterMenu;
 import btssio.appliresto.modele.User;
 import btssio.appliresto.modele.UserDAO;
 import btssio.appliresto.utils.IntentStorage;

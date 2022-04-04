@@ -24,6 +24,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
             + " 	longitudeDegR float, "
             + " 	descR text, "
             + " 	horairesR text, "
+            + "     photoPrincipal text, "
             + " 	primary key (idR) "
             + " ); ";
 
@@ -36,7 +37,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
             + " ); ";
 
 
-    private String creaTableAimer = " create table aimer ( "
+    private String creaTableAimer = " create table annee ( "
             + " 	idR integer, "
             + " 	mailU text, "
             + " 	aime boolean, "
@@ -97,14 +98,16 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
 
 
 
-        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(1, 'lentrepote', '2', 'rue Maurice Ravel', 33000, 'Bordeaux', 44.7948, -0.58754, 'description','11h45||14h30 18h||22h');");
-        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(2, 'le bar du charcutier', '30', 'rue Parlement Sainte-Catherine', 33000, 'Bordeaux', NULL, NULL, 'description', '11h45||14h30 18h||22h');");
-        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(3, 'Sapporo', '33', 'rue Saint Rémi', 33000, 'Bordeaux', NULL, NULL, 'Le Sapporo propose à ses clients de délicieux plats typiques japonais.','11h45||14h30 18h||22h');");
-        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(4, 'Cidrerie du fronton', NULL, 'Place du Fronton', 64210, 'Arbonne', NULL, NULL, 'description','11h45||14h30 18h||22h');");
-        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(5, 'Agadir', '3', 'Rue Sainte-Catherine', 64100, 'Bayonne', NULL, NULL, 'description','11h45||14h30 18h||22h');");
-        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR) values(6, 'Le Bistrot Sainte Cluque', '9', 'Rue Hugues', 64100, 'Bayonne', NULL, NULL, 'description','11h45||14h30 18h||22h');");
-/*
+        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR, photoPrincipal) values(1, 'lentrepote', '2', 'rue Maurice Ravel', 33000, 'Bordeaux', 44.7948, -0.58754, 'description','11h45||14h30 18h||22h', 'https://d1ralsognjng37.cloudfront.net/fd881b26-99d1-45d3-9517-d1177e9e0028.jpeg');");
+        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR, photoPrincipal) values(2, 'le bar du charcutier', '30', 'rue Parlement Sainte-Catherine', 33000, 'Bordeaux', NULL, NULL, 'description', '11h45||14h30 18h||22h', 'https://d1ralsognjng37.cloudfront.net/fd881b26-99d1-45d3-9517-d1177e9e0028.jpeg');");
+        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR, photoPrincipal) values(3, 'Sapporo', '33', 'rue Saint Rémi', 33000, 'Bordeaux', NULL, NULL, 'Le Sapporo propose à ses clients de délicieux plats typiques japonais.','11h45||14h30 18h||22h', 'https://d1ralsognjng37.cloudfront.net/fd881b26-99d1-45d3-9517-d1177e9e0028.jpeg');");
+        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR, photoPrincipal) values(4, 'Cidrerie du fronton', NULL, 'Place du Fronton', 64210, 'Arbonne', NULL, NULL, 'description','11h45||14h30 18h||22h', 'https://d1ralsognjng37.cloudfront.net/fd881b26-99d1-45d3-9517-d1177e9e0028.jpeg');");
+        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR, photoPrincipal) values(5, 'Agadir', '3', 'Rue Sainte-Catherine', 64100, 'Bayonne', NULL, NULL, 'description','11h45||14h30 18h||22h', 'https://d1ralsognjng37.cloudfront.net/fd881b26-99d1-45d3-9517-d1177e9e0028.jpeg');");
+        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR, photoPrincipal) values(6, 'Le Bistrot Sainte Cluque', '9', 'Rue Hugues', 64100, 'Bayonne', NULL, NULL, 'description','11h45||14h30 18h||22h', 'https://d1ralsognjng37.cloudfront.net/fd881b26-99d1-45d3-9517-d1177e9e0028.jpeg');");
+        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR, photoPrincipal) values(7, 'Le Bistrot Sainte Cluque', '9', 'Rue Hugues', 64100, 'Bayonne', NULL, NULL, 'description','11h45||14h30 18h||22h', 'https://d1ralsognjng37.cloudfront.net/fd881b26-99d1-45d3-9517-d1177e9e0028.jpeg');");
+        db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR, photoPrincipal) values(8, 'Le Bistrot Sainte Cluque', '9', 'Rue Hugues', 64100, 'Bayonne', NULL, NULL, 'description','11h45||14h30 18h||22h', 'https://d1ralsognjng37.cloudfront.net/fd881b26-99d1-45d3-9517-d1177e9e0028.jpeg');");
 
+/*
         db.execSQL("insert into aimer (idR,mailU,aime) values(1,'mathieu.capliez@gmail.com',1);");
         db.execSQL("insert into aimer (idR,mailU,aime) values(2,'nicolas.harispe@gmail.com',1);");
         db.execSQL("insert into aimer (idR,mailU,aime) values(4,'alex.garat@gmail.com',1);");

@@ -48,11 +48,12 @@
 
 
                 <TextView
+                    android:id="@+id/numRestaurants"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/seg_ui_semibold"
                     android:text="15 restaurants"
-                    android:textColor="@color/primaryLightColor"
+                    android:textColor="@color/white"
                     android:textSize="18dp" />
 
 
@@ -69,27 +70,37 @@
                 android:layout_marginRight="26dp"
                 android:layout_marginTop="14dp"
                 android:src="@drawable/acount_icon" />
+
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_marginTop="-50dp"
             android:layout_height="0dp"
             android:layout_weight="3"
+            android:orientation="vertical"
             android:background="@drawable/login_card_background"
             android:elevation="36dp">
 
-            <TextView
+
+            <ImageView
+                android:id="@+id/imageViewResto"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="26dp"
-                android:fontFamily="@font/seg_ui_semibold"
-                android:text="Inscription"
-                android:layout_marginTop="36dp"
-                android:layout_marginLeft="48dp"
-                android:textColor="@color/black" />
+                android:layout_height="wrap_content" />
+
+                <ListView
+                    android:id="@+id/restaurantsList"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:divider="@null"
+                    android:dividerHeight="10dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
 
-        </RelativeLayout>
 
     </LinearLayout>
 
