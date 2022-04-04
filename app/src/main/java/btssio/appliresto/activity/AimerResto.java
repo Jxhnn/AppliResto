@@ -26,6 +26,7 @@ public class AimerResto extends AppCompatActivity {
     private Spinner nomResto;
     private ArrayList<Resto> lesRestos;
     private CheckBox aimer;
+    private Button valider;
     private Button retour;
 
 
@@ -37,8 +38,8 @@ public class AimerResto extends AppCompatActivity {
         coordResto = (TextView) findViewById(R.id.textViewCoord);
         descResto = (TextView) findViewById(R.id.textViewDescResto);
         horairesResto = (TextView) findViewById(R.id.textViewHorairesResto);
-
         retour = (Button) findViewById(R.id.btnRetour);
+        valider = (Button) findViewById(R.id.btnValider);
         retour.setOnClickListener((View.OnClickListener) this);
 
         RestoDAO restoDao = new RestoDAO(this);
@@ -83,7 +84,7 @@ public class AimerResto extends AppCompatActivity {
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         public void onClick(View v) {
-            Intent retour = new Intent(ConsulterResto.this, GestionResto.class);
+            Intent retour = new Intent(AimerResto.this, GestionResto.class);
             startActivity(retour);
         }
     };
