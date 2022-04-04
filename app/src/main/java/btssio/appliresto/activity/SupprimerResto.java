@@ -37,20 +37,20 @@ public class SupprimerResto extends AppCompatActivity implements View.OnClickLis
         retour.setOnClickListener(this);
         sup.setOnClickListener(this);
 
-
+        //Création d'une barre déroulante pour sélectionner un nom de resto
         nomResto = (Spinner) findViewById(R.id.spinnerNomResto);
         RestoDAO restoDao = new RestoDAO(this);
         lesRestos = restoDao.getRestos();
         ArrayAdapter<Resto> spinResto = new ArrayAdapter<Resto>(this.getBaseContext(), android.R.layout.simple_spinner_item);
-
+        // Boucle pour récupérer les noms resto de la base de donnée
         for (int i = 0; i < lesRestos.size(); i++) {
             spinResto.add(lesRestos.get(i));
         }
 
 
         nomResto.setAdapter(spinResto);
-
         nomResto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("log", "" + lesRestos.get(i).getNomR());
@@ -77,6 +77,7 @@ public class SupprimerResto extends AppCompatActivity implements View.OnClickLis
                 startActivity(retour);
                 break;
             case R.id.buttonSup:
+                //Dans le cas d'un click sur le bouton "buttonsup" fait appel a la méthode supprimerResto pour supprimer le resto sélectionné
                 Resto unResto = restoDao.getUnResto(idResto);
                 restoDao.supprimerResto(unResto.getIdR());
                 Intent oui = new Intent(SupprimerResto.this, SupprimerResto.class);

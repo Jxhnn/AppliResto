@@ -43,6 +43,7 @@ public class GestionResto extends AppCompatActivity implements View.OnClickListe
 
     public void onClick(View v) {
         switch (v.getId()) {
+            // Dans le cas d'un click sur un bouton ammène sur la page associée
             case R.id.buttonAjouteResto:
                 Intent ajouterR = new Intent(GestionResto.this, AjouterResto.class);
                 startActivity(ajouterR);

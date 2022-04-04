@@ -23,7 +23,7 @@ public class AjouterResto extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ajouter_resto);
 
-
+        // instantiation des éléments de la vue
         nomResto = (EditText) findViewById(R.id.editTextNomResto);
         numAdr = (EditText) findViewById(R.id.editTextNumAdr);
         voieR = (EditText) findViewById(R.id.editTextVoieAdr);
@@ -45,10 +45,12 @@ public class AjouterResto extends AppCompatActivity implements View.OnClickListe
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.buttonAjouR:
+                    // Dans le cas d'un click sur le bouton "buttonAjouR" créer un nouveau resto avec valeurs entrées dans les Edittext
                     Resto unResto= new Resto(String.valueOf(nomResto),Integer.parseInt(String.valueOf(numAdr)),String.valueOf(voieR),Integer.parseInt(String.valueOf(cpR)),String.valueOf(villeR),Integer.parseInt(String.valueOf(latR)),Integer.parseInt(String.valueOf(longR)),String.valueOf(descR),String.valueOf(horaireR), "");
                     restoDao.addResto(unResto);
                 break;
                 case R.id.btnRetour:
+                    // Dans le cas d'un click sur le bouton "btnRetour" retourne sur la page précédente
                     Intent retour = new Intent(AjouterResto.this, GestionResto.class);
                     startActivity(retour);
                 break;

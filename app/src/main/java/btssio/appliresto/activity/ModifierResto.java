@@ -50,18 +50,19 @@ public class ModifierResto extends AppCompatActivity implements View.OnClickList
         descR= findViewById(R.id.editTextDesc);
         horR= findViewById(R.id.editTextHr);
 
+        //Création d'une barre déroulante pour sélectionner un nom de resto
         nomResto = (Spinner) findViewById(R.id.spinnerNomResto);
         RestoDAO restoDao = new RestoDAO(this);
         lesRestos = restoDao.getRestos();
         ArrayAdapter<Resto> spinResto = new ArrayAdapter<Resto>(this.getBaseContext(), android.R.layout.simple_spinner_item);
-
+        // boucle pour récupérer les noms resto de la base de donnée
         for (int i = 0; i < lesRestos.size(); i++) {
             spinResto.add(lesRestos.get(i));
         }
 
 
         nomResto.setAdapter(spinResto);
-
+        //modifie les champs du resto sélectionné
         nomResto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -77,7 +78,7 @@ public class ModifierResto extends AppCompatActivity implements View.OnClickList
                 longRes=lesRestos.get(i).getLongitudeDegR()+"";
                 desc=lesRestos.get(i).getDescR();
                 hor=lesRestos.get(i).getHorairesR();
-
+                //incrémente les valeurs rentrées en Edit text
                 nomR.setText(nom);
                 numAdrR.setText(num);
                 voieAdrR.setText(voie);
@@ -104,6 +105,7 @@ public class ModifierResto extends AppCompatActivity implements View.OnClickList
                 Intent retour = new Intent(ModifierResto.this, GestionResto.class);
                 startActivity(retour);
                 break;
+            //Dans le cas d'un click sur bouton modifier
             case R.id.btnModifier:
                 Resto unResto = restoDao.getUnResto(idResto);
                 restoDao.modifierResto(unResto);
