@@ -12,10 +12,7 @@ import btssio.appliresto.modele.User;
 import btssio.appliresto.modele.UserDAO;
 
 public class ModifProfil extends Activity implements View.OnClickListener{
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.modif_profil);
-    }
+
     private TextView lblmailU;
     private EditText lblmdpU;
     private EditText new_pseudoU;
@@ -27,6 +24,8 @@ public class ModifProfil extends Activity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.modif_profil);
+
         setContentView(R.layout.modifier_profil);
 
         lblmailU = (TextView) findViewById(R.id.lblmailU);
@@ -38,17 +37,16 @@ public class ModifProfil extends Activity implements View.OnClickListener{
 
 
 
-        btnModifier.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (confirm_mdpU=new_mdpU && lblmdpU /* getmdpU de l'utilisateur connecté*/){
-                    User unUser = new User( /*mail utilisateur connecté*/, new_pseudoU.getText().toString(), new_mdpU.getText().toString());
-                    UserDAO unUserDAO;
-                    unUserDAO = new UserDAO(Context);
-                    unUserDAO.updateUser(unUser,/*mail de l'utilisateur connecté*/);
-                }
-            }
-        });
+        btnModifier.setOnClickListener(this);
     };
-}
+
+    @Override
+    public void onClick(View view) {
+        /*if (confirm_mdpU=new_mdpU && lblmdpU /* getmdpU de l'utilisateur connecté*//*){
+            User unUser = new User( /*mail utilisateur connecté*//*, new_pseudoU.getText().toString(), new_mdpU.getText().toString());
+            UserDAO unUserDAO;
+            unUserDAO = new UserDAO(Context);
+            unUserDAO.updateUser(unUser,/*mail de l'utilisateur connecté*//*);*/
+        }
+    }
+

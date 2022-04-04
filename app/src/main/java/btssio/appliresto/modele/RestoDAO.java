@@ -67,14 +67,14 @@ public class RestoDAO {
 
         ContentValues resto = new ContentValues();
         resto.put("nomR",unResto.getNomR());
-        resto.put("numAdrR",unResto.getNomR());
-        resto.put("voieAdrR",unResto.getNomR());
-        resto.put("cpR",unResto.getNomR());
-        resto.put("villeR",unResto.getNomR());
-        resto.put("latitudeDegR",unResto.getNomR());
-        resto.put("longitudeDegR",unResto.getNomR());
-        resto.put("descR",unResto.getNomR());
-        resto.put("horairesR",unResto.getNomR());
+        resto.put("numAdrR",unResto.getNumAdrR());
+        resto.put("voieAdrR",unResto.getVoieAdrR());
+        resto.put("cpR",unResto.getCpR());
+        resto.put("villeR",unResto.getVilleR());
+        resto.put("latitudeDegR",unResto.getLatitudeDegR());
+        resto.put("longitudeDegR",unResto.getLongitudeDegR());
+        resto.put("descR",unResto.getDescR());
+        resto.put("horairesR",unResto.getHorairesR());
 
         SQLiteDatabase bd = accesBD.getWritableDatabase();
         ret= bd.update("resto",resto,"idR="+unResto.getIdR(),null);
