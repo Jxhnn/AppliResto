@@ -42,10 +42,14 @@ public class MenuUtilisateur extends Activity implements View.OnClickListener{
             case R.id.buttonModifProfil:
                 Intent modif = new Intent(MenuUtilisateur.this, ModifProfil.class);
                 startActivity(modif);
+            case R.id.buttonGestionCritiques:
+                Intent gestioncrit = new Intent(MenuUtilisateur.this, GestionCritiques.class);
+                startActivity(gestioncrit);
             break;
             case R.id.buttonDeco:
                 Intent deco = new Intent(MenuUtilisateur.this, MainActivity.class);
                 startActivity(deco);
+
         }
 
     }

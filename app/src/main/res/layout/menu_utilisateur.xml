@@ -31,6 +31,12 @@
             android:text="Modifier Profil" />
 
         <Button
+            android:id="@+id/buttonGestionCritiques"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gestion des critiques" />
+
+        <Button
             android:id="@+id/buttonDeco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
