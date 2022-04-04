@@ -28,16 +28,11 @@ public class consulter_utilisateur extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.consulter_utilisateur);
-
-
         listeU=(ListView) findViewById(R.id.listUtilisateur);
         lesUsers = userDao.getUsers();
 
         ArrayAdapter monadapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lesUsers);
-
         listeU.setAdapter(monadapter);
-
-
         listeU.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -48,11 +43,5 @@ public class consulter_utilisateur extends Activity{
                 startActivity(i);
             }
         });
-
-
-
-
     }
-
-
 }
