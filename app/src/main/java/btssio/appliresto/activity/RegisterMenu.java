@@ -40,6 +40,7 @@ public class RegisterMenu extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        //Crée un nouveau User avec les parametres mailEdit, passEdit et nickEdit
         if (view == registerButton) {
             User newUser = new User(mailEdit.getText().toString(),
                     passEdit.getText().toString(),
