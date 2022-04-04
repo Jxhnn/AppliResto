@@ -137,6 +137,12 @@
             android:text="Aimer" />
 
         <Button
+            android:id="@+id/btnValider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Valider" />
+
+        <Button
             android:id="@+id/btnRetour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
