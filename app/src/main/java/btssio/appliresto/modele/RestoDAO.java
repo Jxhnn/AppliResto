@@ -53,6 +53,7 @@ public class RestoDAO {
         return unResto;
     }
 
+
     public long supprimerResto(int idR){
         long ret;
         SQLiteDatabase bd = accesBD.getWritableDatabase();

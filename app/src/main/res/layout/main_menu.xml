@@ -48,11 +48,12 @@
 
 
                 <TextView
+                    android:id="@+id/numRestaurants"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/seg_ui_semibold"
                     android:text="15 restaurants"
-                    android:textColor="@color/primaryLightColor"
+                    android:textColor="@color/white"
                     android:textSize="18dp" />
 
 
