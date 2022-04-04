@@ -30,7 +30,7 @@ public class ConsulterResto extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.consulter_resto);
-
+        // instantiation des éléments de la vue
         nomResto = (Spinner) findViewById(R.id.spinnerNomResto);
         adrResto = (TextView) findViewById(R.id.textViewAdresseRes);
         coordResto = (TextView) findViewById(R.id.textViewCoord);
@@ -39,17 +39,18 @@ public class ConsulterResto extends AppCompatActivity implements View.OnClickLis
 
         retour = (Button) findViewById(R.id.btnRetour);
         retour.setOnClickListener(this);
-
+        // création d'une liste déroulante pour récupérer le nom des resto
         RestoDAO restoDao = new RestoDAO(this);
         lesRestos = restoDao.getRestos();
         ArrayAdapter<Resto> spinResto = new ArrayAdapter<Resto>(this.getBaseContext(),android.R.layout.simple_spinner_item);
-
+        //création d'une boucle pour récupérer les valeurs du tableau "Resto"
         for(int i=0;i<lesRestos.size();i++){
             spinResto.add(lesRestos.get(i));
         }
 
         nomResto.setAdapter(spinResto);
 
+        //Affichage des champs du resto sélectionné
         nomResto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

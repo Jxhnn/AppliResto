@@ -112,7 +112,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
         db.execSQL("insert into aimer (idR,mailU,aime) values(2,'nicolas.harispe@gmail.com',1);");
         db.execSQL("insert into aimer (idR,mailU,aime) values(4,'alex.garat@gmail.com',1);");
         db.execSQL("insert into aimer (idR,mailU,aime) values(6,'jj.soueix@gmail.com',1);");
-
+*/
 
         db.execSQL("insert into critique(idR,mailU,note,commentaire) values(1,'alex.garat@gmail.com',3,'moyen');");
         db.execSQL("insert into critique(idR,mailU,note,commentaire) values(3,'nicolas.harispe@gmail.com',4,'Très bonne entrecote, les frites sont maisons et delicieuses.');");
@@ -121,7 +121,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
         db.execSQL("insert into critique(idR,mailU,note,commentaire) values(4,'alex.garat@gmail.com',2,'bof.');");
 
 
-*/
+
 
     }
 

@@ -22,7 +22,7 @@ import btssio.appliresto.modele.RestoDAO;
 
 import btssio.appliresto.R;
 import btssio.appliresto.modele.User;
-import btssio.appliresto.modele.UserDAO;
+import btssio.appliresto.utils.IntentStorage;
 
 public class CritiquesResto extends Activity implements View.OnClickListener{
 
@@ -34,25 +34,39 @@ public class CritiquesResto extends Activity implements View.OnClickListener{
     private RadioButton radioButton4;
     private RadioButton radioButton5;
 
+    private String mail;
+    private int idR;
+
     private EditText EditCritiques;
     private Button btnValider;
     private Button btnRetour;
     private ArrayList<Resto> listeResto;
 
+    private User loggedUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        loggedUser = IntentStorage.get(getIntent(), "LoggedUser");
+
+        mail=loggedUser.getMailU();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.critiques);
-        Button btnValider = (Button) findViewById(R.id.btnValider);
-        Button btnRetour = (Button) findViewById(R.id.btnRetour);
+        btnValider = (Button) findViewById(R.id.btnSupOuValid);
+        btnRetour = (Button) findViewById(R.id.btnRetour);
 
-        this.GroupNotes= (RadioGroup) this.findViewById(R.id.radioGroup_notes);
-        this.radioButton1 = (RadioButton) this.findViewById(R.id.radioButton_1);
-        this.radioButton2  =  (RadioButton)this.findViewById(R.id.radioButton_2);
-        this.radioButton3  =  (RadioButton)this.findViewById(R.id.radioButton_3);
-        this.radioButton4  =  (RadioButton)this.findViewById(R.id.radioButton_4);
-        this.radioButton5  =  (RadioButton)this.findViewById(R.id.radioButton_5);
+        btnValider.setOnClickListener(this);
+        btnRetour.setOnClickListener(this);
+
+
+        GroupNotes= (RadioGroup) this.findViewById(R.id.radioGroup_notes);
+        radioButton1 = (RadioButton) this.findViewById(R.id.radioButton_1);
+        radioButton2  =  (RadioButton)this.findViewById(R.id.radioButton_2);
+        radioButton3  =  (RadioButton)this.findViewById(R.id.radioButton_3);
+        radioButton4  =  (RadioButton)this.findViewById(R.id.radioButton_4);
+        radioButton5  =  (RadioButton)this.findViewById(R.id.radioButton_5);
 
         EditCritiques = (EditText) findViewById(R.id.EditCritiques);
         spinResto = (Spinner) findViewById(R.id.spinResto);
@@ -71,33 +85,33 @@ public class CritiquesResto extends Activity implements View.OnClickListener{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("log", Integer.toString(position) + " " + listeResto.get(position).toString());
+                idR=listeResto.get(position).getIdR();
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
         // When button "Save" clicked.
-        btnValider.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
-        doSave();
+        //doSave();
         switch (v.getId()){
-            case R.id.btnValider:
-                //Critique uneCritique = new Critique(spinResto, /* mail de l'utilisateur connecté */,  listeResto.get(spinResto.getSelectedItemPosition()).getNomR()); EditCritiques.getText().toString();
-                //CritiqueDAO uneCritiqueDAO = new CritiqueDAO(this);
-                //uneCritiqueDAO.addCritique(uneCritique);
+            case R.id.btnSupOuValid:
+                Critique uneCritique = new Critique(idR, mail,doSave() , EditCritiques.getText().toString());
+                CritiqueDAO uneCritiqueDAO = new CritiqueDAO(this);
+                uneCritiqueDAO.addCritique(uneCritique);
             break;
             case R.id.btnRetour:
                 Intent retour = new Intent(CritiquesResto.this, GestionResto.class);
                 startActivity(retour);
                 break;
         }
-        // Critique uneCritique = new Critique(spinResto, /* mail de l'utilisateur connecté */,  listeResto.get(spinResto.getSelectedItemPosition()).getNomR()); EditCritiques.getText().toString();
-        // CritiqueDAO uneCritiqueDAO;
-        // uneCritiqueDAO = new CritiqueDAO(context);
-        // uneCritiqueDAO.addCritique(uneCritique);
+
+
     }
         // Radio group 1-5 pour mettre une note au resto selectionné
         private int doSave()  {
