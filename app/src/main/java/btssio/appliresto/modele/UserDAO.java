@@ -55,7 +55,7 @@ public class UserDAO {
     }
 
 
-    public User getUser(String mail, String pseudoU){
+    public User getUser(String mail, String pseudoU) {
         User unUser=null;
         Cursor curseur;
         curseur=accesBD.getReadableDatabase().rawQuery("select * from utilisateur where mailU ="+mail+";",null);
@@ -63,7 +63,6 @@ public class UserDAO {
             curseur.moveToFirst();
             unUser=new User(mail,pseudoU);
         }
-
         return unUser;
     }
 

@@ -36,16 +36,17 @@ public class CritiqueDAO {
         return ret;
     }
 
-    public Critique getUneCritique(int idR){
+    public ArrayList<Critique> getCritiquesFromRestaurant(int idR) {
+        ArrayList<Critique> lesCritiques = new ArrayList<Critique>();
         Cursor curseur;
-        Critique uneCritiques = null;
-        String req="SELECT * FROM critique WHERE idR="+idR;
+        String req="SELECT * FROM Critique WHERE idR = " + idR + ";";
         curseur = accesBD.getReadableDatabase().rawQuery(req,null);
         if (curseur.getCount() > 0) {
             curseur.moveToFirst();
-            uneCritiques = new Critique(idR,curseur.getString(1),curseur.getInt(2),curseur.getString(3));
+            Critique uneCritique = new Critique(idR,curseur.getString(1),curseur.getInt(2),curseur.getString(3));
+            lesCritiques.add(uneCritique);
         }
-        return uneCritiques;
+        return lesCritiques;
     }
 
     public long modifierCrit(Critique crit){
@@ -72,7 +73,14 @@ public class CritiqueDAO {
 
     public ArrayList<Critique> getCritiques(String mail){
         Cursor curseur;
-        String req = "select * from critique WHERE mailU="+mail;
+        String req = "select * from critique WHERE mailU = '" + mail + "';";
+        curseur = accesBD.getReadableDatabase().rawQuery(req,null);
+        return cursorToCritiquesArrayList(curseur);
+    }
+
+    public ArrayList<Critique> getCommentsOfRestaurant(int idR){
+        Cursor curseur;
+        String req = "select * from critique WHERE idR = " + idR + ";";
         curseur = accesBD.getReadableDatabase().rawQuery(req,null);
         return cursorToCritiquesArrayList(curseur);
     }

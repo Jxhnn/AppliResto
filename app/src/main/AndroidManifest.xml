@@ -28,6 +28,10 @@
         <activity android:name=".activity.ModifProfil" android:exported="true"></activity>
         <activity android:name=".activity.MainMenu" android:exported="true"></activity>
         <activity android:name=".activity.PersonnalInfosMenu" android:exported="true"></activity>
+        <activity android:name=".activity.MenuUtilisateur" android:exported="true"></activity>
+        <activity android:name=".activity.showRestaurant" android:exported="true"></activity>
+        <activity android:name=".activity.GestionCritiques" android:exported="true"></activity>
+        <activity android:name=".activity.CritiquesResto" android:exported="true"></activity>
     </application>
 
 </manifest>

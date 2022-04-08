@@ -31,6 +31,24 @@
         <entry key="..\:/THOMAS John/AndroidProjects/AppliResto/app/src/main/res/layout/consulter_resto_user.xml" value="0.18489583333333334" />
         <entry key="..\:/THOMAS John/AndroidProjects/AppliResto/app/src/main/res/layout/consulter_utilisateur.xml" value="0.18489583333333334" />
         <entry key="..\:/THOMAS John/AndroidProjects/AppliResto/app/src/main/res/layout/login_user.xml" value="0.27691107644305774" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/drawable-anydpi/acount_icon.xml" value="0.1" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/drawable-anydpi/globalNote.xml" value="0.1" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/drawable/button_background.xml" value="0.141" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/drawable/login_card_background.xml" value="0.1" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/drawable/round_outline.xml" value="0.1" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/drawable/round_outline2.xml" value="0.1" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/drawable/round_outlineFit.xml" value="0.141" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/layout/activity_main.xml" value="0.2346014492753623" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/layout/consulter_resto.xml" value="0.2966485507246377" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/layout/critiques.xml" value="0.33" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/layout/gestion_critiques.xml" value="0.1" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/layout/gestion_utilisateur.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/layout/main_menu.xml" value="0.2966485507246377" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/layout/menu_utilisateur.xml" value="0.25" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/layout/row_item.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/layout/row_item2.xml" value="0.2346014492753623" />
+        <entry key="..\:/Users/John/AndroidStudioProjects/AppliResto/app/src/main/res/layout/show_restaurant.xml" value="0.2966485507246377" />
         <entry key="..\:/Users/john.thomas/StudioProjects/AppliResto/app/src/main/res/layout/activity_main.xml" value="0.3582427536231884" />
         <entry key="..\:/Users/john.thomas/StudioProjects/AppliResto/app/src/main/res/layout/main_menu.xml" value="0.3582427536231884" />
         <entry key="..\:/Users/john.thomas/StudioProjects/AppliResto/app/src/main/res/layout/modif_profil.xml" value="0.3582427536231884" />

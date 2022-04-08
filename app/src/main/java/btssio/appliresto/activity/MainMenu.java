@@ -22,17 +22,19 @@ import java.util.ArrayList;
 
 import btssio.appliresto.R;
 import btssio.appliresto.adapter.RestoAdapter;
+import btssio.appliresto.holder.RestaurantViewHolder;
 import btssio.appliresto.modele.Resto;
 import btssio.appliresto.modele.RestoDAO;
 import btssio.appliresto.modele.User;
 import btssio.appliresto.utils.IntentStorage;
 import btssio.appliresto.utils.WebUtils;
 
-public class MainMenu extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
+public class MainMenu extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener, AdapterView.OnItemClickListener {
 
     private ImageView accountIcon;
     private User loggedUser;
     private TextView numRestaurants;
+    private int[] idRestaurants;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener,
         String[] nomRestaurants = new String[restorants.size()];
         String[] descRestaurants = new String[restorants.size()];
         String[] imageRestaurants = new String[restorants.size()];
-        int[] idRestaurants = new int[restorants.size()];
+        idRestaurants = new int[restorants.size()];
 
         WebUtils webUtils = new WebUtils();
 
@@ -70,36 +72,24 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener,
 
 
         ListView listView = (ListView)findViewById(R.id.restaurantsList);
+        RestaurantViewHolder.loggedUser = loggedUser;
         RestoAdapter restoAdapter = new RestoAdapter(this, nomRestaurants, descRestaurants, imageRestaurants, idRestaurants, listView);
         listView.setAdapter(restoAdapter);
+        listView.setOnItemClickListener(this);
 
         // https://stackoverflow.com/a/8353790
         // https://java2blog.com/android-custom-listview-with-images-text-example/
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // view.findViewById(R.id.likeButton);
-                Toast.makeText(getApplicationContext(),"You Selected "+nomRestaurants[position]+ " as Restaurant",Toast.LENGTH_SHORT).show();        }
-        });
-
     }
 
     // TODO: Move onto Utils
-    private void showPopup(View v) {
-        PopupMenu popup = new PopupMenu(this, v);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.main_option_menu, popup.getMenu());
-        popup.show();
-        popup.setOnMenuItemClickListener(this);
 
-    }
 
     @Override
     public void onClick(View view) {
 
         if (view == accountIcon) {
-            showPopup(view);
+            btssio.appliresto.utils.PopupMenu.showPopup(view, this);
         }
     }
 
@@ -121,7 +111,20 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener,
             loggedUser = null;
             Intent mainActivity = new Intent(this, MainActivity.class);
             startActivity(mainActivity);
+        } else if (item.getTitle().equals("Options")) {
+            Intent userMenu = new Intent(this, MenuUtilisateur.class);
+            IntentStorage.add(userMenu, "LoggedUser", loggedUser);
+            startActivity(userMenu);
         }
         return false;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+        Intent showRestaurant = new Intent(this, showRestaurant.class);
+        RestoDAO restoManager = new RestoDAO(this);
+        IntentStorage.add(showRestaurant, "loggedUser", loggedUser);
+        IntentStorage.add(showRestaurant, "thisResto", restoManager.getUnResto(idRestaurants[pos]));
+        startActivity(showRestaurant);
     }
 }

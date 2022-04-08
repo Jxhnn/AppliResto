@@ -26,10 +26,13 @@ import java.util.concurrent.ExecutionException;
 
 import btssio.appliresto.R;
 import btssio.appliresto.activity.MainMenu;
+import btssio.appliresto.holder.RestaurantViewHolder;
+import btssio.appliresto.modele.Aimer;
+import btssio.appliresto.modele.AimerDAO;
 import btssio.appliresto.utils.WebUtils;
 
 
-public class RestoAdapter extends ArrayAdapter implements View.OnClickListener {
+public class RestoAdapter extends ArrayAdapter {
     private String[] countryNames;
     private String[] capitalNames;
     private String[] imageid;
@@ -54,23 +57,44 @@ public class RestoAdapter extends ArrayAdapter implements View.OnClickListener {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // final RecyclerView.ViewHolder holder = new RecyclerView.ViewHolder(convertView);
+
+        RestaurantViewHolder holder = null;
         View row=convertView;
-        LayoutInflater inflater = context.getLayoutInflater();
-        if(convertView==null)
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        if(convertView==null) {
             row = inflater.inflate(R.layout.row_item, null, true);
-        TextView textViewCountry = (TextView) row.findViewById(R.id.itemRestaurantName);
-        TextView textViewCapital = (TextView) row.findViewById(R.id.itemRestaurantDesc);
-        ImageView imageFlag = (ImageView) row.findViewById(R.id.imageViewFlag);
-        ImageView likeButton = (ImageView) row.findViewById(R.id.likeButton);
+            holder = new RestaurantViewHolder(row, listView, idRestaurants);
+            row.setTag(holder);
+
+            holder.textViewCountry = (TextView) row.findViewById(R.id.itemRestaurantName);
+            holder.textViewCapital = (TextView) row.findViewById(R.id.itemRestaurantDesc);
+            holder.imageFlag = (ImageView) row.findViewById(R.id.imageViewFlag);
+            holder.likeButton = (ImageView) row.findViewById(R.id.likeButton);
+
+
+        } else {
+            holder = (RestaurantViewHolder) row.getTag();
+        }
+
 
 
         //TODO : check for already liked restaurants
 
+        AimerDAO likeManager = new AimerDAO(row.getContext());
+        Aimer isLiked = likeManager.getAimer(RestaurantViewHolder.loggedUser.getMailU(), idRestaurants[position]);
 
 
-        textViewCountry.setText(countryNames[position]);
-        textViewCapital.setText(capitalNames[position]);
+        if (isLiked != null && isLiked.getAime() == true) {
+            holder.likeButton.setImageResource(R.mipmap.liked);
+        } else if (isLiked != null) {
+            holder.likeButton.setImageResource(R.mipmap.unliked);
+        }
+
+
+        if (holder.textViewCountry != null) {
+            holder.textViewCountry.setText(countryNames[position]);
+            holder.textViewCapital.setText(capitalNames[position]);
+        }
 
         Drawable b = null;
         try {
@@ -80,33 +104,23 @@ public class RestoAdapter extends ArrayAdapter implements View.OnClickListener {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        imageFlag.setImageDrawable(b);
+
+        if (holder.imageFlag != null) {
+            holder.imageFlag.setImageDrawable(b);
+        }
+        holder.likeButton.setClipToOutline(true);
 
 
-
-        if (!likeButton.hasOnClickListeners()) {
+        if (holder.likeButton != null && !holder.likeButton.hasOnClickListeners()) {
             Log.d("debug", "onclick created");
-            likeButton.setOnClickListener(this);
+            holder.setLikeListener();
         }
 
-        imageFlag.setClipToOutline(true);
+        if (holder.imageFlag != null) {
+            holder.imageFlag.setClipToOutline(true);
+        }
 
+        notifyDataSetChanged();
         return  row;
-    }
-
-    @Override
-    public void onClick(View view) {
-
-        View item = (View) view.getParent();
-        int pos = listView.getPositionForView(item);
-        // long id = listView.getItemIdAtPosition(pos);
-        view.setTag(pos);
-
-        Log.d("pos: ", "" + idRestaurants[pos]);
-        ImageView image = (ImageView) listView.findViewWithTag(pos);
-        image.setImageResource(R.mipmap.liked);
-
-        Log.d("id: ", "" + view.getId());
-
     }
 }
