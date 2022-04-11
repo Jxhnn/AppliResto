@@ -68,7 +68,12 @@ public class CritiquesResto extends Activity implements View.OnClickListener{
             Critique uneCritique = new Critique(thisResto.getIdR(), loggedUser.getMailU(), Integer.parseInt(editNote.getText().toString()) ,editComment.getText().toString());
             CritiqueDAO uneCritiqueDAO = new CritiqueDAO(this);
             uneCritiqueDAO.addCritique(uneCritique);
-            Toast.makeText(null, "Commentaire ajouté !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Commentaire ajouté !", Toast.LENGTH_SHORT).show();
+
+            Intent showRestaurantActivity = new Intent(CritiquesResto.this, showRestaurant.class);
+            IntentStorage.add(showRestaurantActivity, "loggedUser", loggedUser);
+            IntentStorage.add(showRestaurantActivity, "thisResto", thisResto);
+            startActivity(showRestaurantActivity);
 
         } else if (v == backButton) {
             Intent showRestaurantActivity = new Intent(CritiquesResto.this, showRestaurant.class);

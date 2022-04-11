@@ -15,5 +15,6 @@
     <color name="editLoginColor">#14000000</color>
 
     <color name="transparent">#00000000</color>
+    <color name="danger">#d9534f</color>
 
 </resources>

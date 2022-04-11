@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
@@ -39,7 +40,8 @@ public class showRestaurant extends AppCompatActivity implements View.OnClickLis
     private ListView commentList;
     private String[] userNames;
     private String[] descComments;
-    private int avgNote;
+    private String[] emails;
+    private float avgNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,11 +98,13 @@ public class showRestaurant extends AppCompatActivity implements View.OnClickLis
 
         userNames = new String[allComments.size()];
         descComments = new String[allComments.size()];
+        emails = new String[allComments.size()];
 
         for (int i = 0; i <= allComments.size() - 1; i++) {
             String userName = userManager.getUsernameFromEmail(allComments.get(i).getMailU());
             userNames[i] = userName;
             descComments[i] = allComments.get(i).getCommentaire();
+            emails[i] = allComments.get(i).getMailU();
             avgNote += allComments.get(i).getNote();
         }
 
@@ -117,7 +121,8 @@ public class showRestaurant extends AppCompatActivity implements View.OnClickLis
 
 
         if (descComments != null) {
-            CommentAdapter adapter = new CommentAdapter(this, userNames, descComments, commentList);
+            CommentAdapter adapter = new CommentAdapter(this, userNames,
+                    descComments, emails,commentList, loggedUser, thisResto);
             commentList.setAdapter(adapter);
         }
 
@@ -140,10 +145,21 @@ public class showRestaurant extends AppCompatActivity implements View.OnClickLis
         } else if (view == accountIcon) {
             btssio.appliresto.utils.PopupMenu.showPopup(view, this);
         } else if (view == addComment) {
-            Intent addCommentActivity = new Intent(showRestaurant.this, CritiquesResto.class);
-            IntentStorage.add(addCommentActivity, "LoggedUser", loggedUser);
-            IntentStorage.add(addCommentActivity, "thisResto", thisResto);
-            startActivity(addCommentActivity);
+            CritiqueDAO commentManager = new CritiqueDAO(this);
+            if (commentManager.alreadyCommented(thisResto.getIdR(), loggedUser.getMailU())) {
+
+                Toast.makeText(this, "Vous avez déjà commenté ce restaurant !", Toast.LENGTH_SHORT).show();
+
+            } else {
+
+                Intent addCommentActivity = new Intent(showRestaurant.this, CritiquesResto.class);
+                IntentStorage.add(addCommentActivity, "LoggedUser", loggedUser);
+                IntentStorage.add(addCommentActivity, "thisResto", thisResto);
+                startActivity(addCommentActivity);
+            }
+
+
+
         }
     }
 

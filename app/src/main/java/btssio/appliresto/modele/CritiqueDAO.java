@@ -49,6 +49,16 @@ public class CritiqueDAO {
         return lesCritiques;
     }
 
+    public boolean alreadyCommented(int idR, String email) {
+        Cursor curseur;
+        String req="SELECT * FROM Critique WHERE idR = " + idR + " AND mailU = '" + email + "';";
+        curseur = accesBD.getReadableDatabase().rawQuery(req,null);
+        if (curseur.getCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
     public long modifierCrit(Critique crit){
         long ret;
 
@@ -65,7 +75,7 @@ public class CritiqueDAO {
     public long supprimerCrit(int idR,String mail){
         long ret;
         SQLiteDatabase bd = accesBD.getWritableDatabase();
-        ret= bd.delete("critique", "idR="+idR+" and mailU="+mail,null);
+        ret= bd.delete("critique", "idR="+idR+" and mailU='"+mail + "'",null);
         Log.d("1","2");
         return ret;
     }
@@ -78,7 +88,7 @@ public class CritiqueDAO {
         return cursorToCritiquesArrayList(curseur);
     }
 
-    public ArrayList<Critique> getCommentsOfRestaurant(int idR){
+    public ArrayList<Critique> getCommentsOfRestaurant(int idR) {
         Cursor curseur;
         String req = "select * from critique WHERE idR = " + idR + ";";
         curseur = accesBD.getReadableDatabase().rawQuery(req,null);
