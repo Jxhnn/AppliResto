@@ -8,12 +8,14 @@ import android.widget.Button;
 
 import btssio.appliresto.R;
 import btssio.appliresto.controleur.consulter_utilisateur;
+import btssio.appliresto.modele.User;
+import btssio.appliresto.utils.IntentStorage;
 
 public class MenuAdmin extends Activity implements View.OnClickListener{
     private Button gestResto;
     private Button gestUtil;
-    private Button deco;
-
+    private Button backButton;
+    private User loggedUser;
 
 
     @Override
@@ -23,15 +25,13 @@ public class MenuAdmin extends Activity implements View.OnClickListener{
 
         gestResto=(Button) findViewById(R.id.buttonResto);
         gestUtil=(Button) findViewById(R.id.button2);
-        deco=(Button) findViewById(R.id.button3);
+        backButton=(Button) findViewById(R.id.button3);
 
         gestResto.setOnClickListener(this);
         gestUtil.setOnClickListener(this);
-        deco.setOnClickListener(this);
+        backButton.setOnClickListener(this);
 
-
-
-
+        loggedUser = IntentStorage.get(getIntent(), "LoggedUser");
     }
 
     @Override
@@ -39,14 +39,21 @@ public class MenuAdmin extends Activity implements View.OnClickListener{
         switch(view.getId()) {
             case R.id.buttonResto:
                 Intent i= new Intent(MenuAdmin.this,GestionResto.class);
+                IntentStorage.add(i, "LoggedUser", loggedUser);
+                finish();
                 startActivity(i);
                 break;
             case R.id.button2:
                 Intent i2=new Intent(MenuAdmin.this, consulter_utilisateur.class);
+                IntentStorage.add(i2, "LoggedUser", loggedUser);
+                finish();
                 startActivity(i2);
                 break;
             case R.id.button3:
-                Intent i3=new Intent(MenuAdmin.this, GestionResto.MainMenu.class);
+
+                Intent i3=new Intent(MenuAdmin.this, MainMenu.class);
+                IntentStorage.add(i3, "LoggedUser", loggedUser);
+                finish();
                 startActivity(i3);
                 break;
         }

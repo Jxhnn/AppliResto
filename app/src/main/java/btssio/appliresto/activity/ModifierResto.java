@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 import btssio.appliresto.R;
 import btssio.appliresto.modele.Resto;
 import btssio.appliresto.modele.RestoDAO;
+import btssio.appliresto.modele.User;
+import btssio.appliresto.utils.IntentStorage;
 
 public class ModifierResto extends AppCompatActivity implements View.OnClickListener{
 
@@ -28,6 +31,7 @@ public class ModifierResto extends AppCompatActivity implements View.OnClickList
     private int idResto;
     private Button modif, retour;
     RestoDAO restoDao = new RestoDAO(this);
+    private User loggedUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,8 @@ public class ModifierResto extends AppCompatActivity implements View.OnClickList
         longR= findViewById(R.id.editTextLong);
         descR= findViewById(R.id.editTextDesc);
         horR= findViewById(R.id.editTextHr);
+
+        loggedUser = IntentStorage.get(getIntent(), "LoggedUser");
 
         //Création d'une barre déroulante pour sélectionner un nom de resto
         nomResto = (Spinner) findViewById(R.id.spinnerNomResto);
@@ -95,22 +101,38 @@ public class ModifierResto extends AppCompatActivity implements View.OnClickList
 
             }
         });
-
-
     }
 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnRetour:
-                Intent retour = new Intent(ModifierResto.this, GestionResto.class);
-                startActivity(retour);
+                Intent i = new Intent(ModifierResto.this, GestionResto.class);
+                IntentStorage.add(i, "LoggedUser", loggedUser);
+                finish();
+                startActivity(i);
                 break;
             //Dans le cas d'un click sur bouton modifier
             case R.id.btnModifier:
-                Resto unResto = restoDao.getUnResto(idResto);
-                restoDao.modifierResto(unResto);
-                Intent oui = new Intent(ModifierResto.this, ModifierResto.class);
-                startActivity(oui);
+
+                try {
+                    // Resto unResto = restoDao.getUnResto(idResto);
+                    Resto unResto = new Resto(idResto, nomR.getText().toString(),
+                            Integer.parseInt(numAdrR.getText().toString()), voieAdrR.getText().toString(),
+                            Integer.parseInt(cpR.getText().toString()), villeR.getText().toString(),
+                            Float.parseFloat(latR.getText().toString()), Float.parseFloat(longR.getText().toString()),
+                            descR.getText().toString(), horR.getText().toString(), "");
+
+                    restoDao.modifierResto(unResto);
+                    Intent intent = new Intent(ModifierResto.this, GestionResto.class);
+                    IntentStorage.add(intent, "LoggedUser", loggedUser);
+                    Toast.makeText(this, "Le restaurant a été modifié ! ", Toast.LENGTH_SHORT).show();
+                    finish();
+                    startActivity(intent);
+
+                } catch (NumberFormatException exc){
+                    Toast.makeText(this, "Certains champs numériques ne sont pas valides ! ", Toast.LENGTH_SHORT);
+                }
+
                 break;
         }
     }

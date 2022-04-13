@@ -141,6 +141,7 @@ public class showRestaurant extends AppCompatActivity implements View.OnClickLis
         if (view  == backButtonShow) {
             Intent mainMenu = new Intent(showRestaurant.this, MainMenu.class);
             IntentStorage.add(mainMenu, "LoggedUser", loggedUser);
+            finish();
             startActivity(mainMenu);
         } else if (view == accountIcon) {
             btssio.appliresto.utils.PopupMenu.showPopup(view, this, loggedUser.isAdmin());
@@ -155,6 +156,7 @@ public class showRestaurant extends AppCompatActivity implements View.OnClickLis
                 Intent addCommentActivity = new Intent(showRestaurant.this, CritiquesResto.class);
                 IntentStorage.add(addCommentActivity, "LoggedUser", loggedUser);
                 IntentStorage.add(addCommentActivity, "thisResto", thisResto);
+                finish();
                 startActivity(addCommentActivity);
             }
 

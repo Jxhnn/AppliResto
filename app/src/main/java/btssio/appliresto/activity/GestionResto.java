@@ -9,6 +9,8 @@ import android.widget.ImageView;
 
 
 import btssio.appliresto.R;
+import btssio.appliresto.modele.User;
+import btssio.appliresto.utils.IntentStorage;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
@@ -16,7 +18,7 @@ import androidx.appcompat.widget.PopupMenu;
 public class GestionResto extends AppCompatActivity implements View.OnClickListener{
 
     private Button ajouter,supp,modif,consulter,retour;
-
+    private User loggedUser;
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class GestionResto extends AppCompatActivity implements View.OnClickListe
         consulter.setOnClickListener(this);
         retour.setOnClickListener(this);
 
-
+        loggedUser = IntentStorage.get(getIntent(), "LoggedUser");
     }
 
 
@@ -46,56 +48,40 @@ public class GestionResto extends AppCompatActivity implements View.OnClickListe
             // Dans le cas d'un click sur un bouton ammène sur la page associée
             case R.id.buttonAjouteResto:
                 Intent ajouterR = new Intent(GestionResto.this, AjouterResto.class);
+                IntentStorage.add(ajouterR, "LoggedUser", loggedUser);
+                finish();
                 startActivity(ajouterR);
                 break;
             case R.id.buttonConsultResto:
                 Intent cons = new Intent(GestionResto.this, ConsulterResto.class);
+                IntentStorage.add(cons, "LoggedUser", loggedUser);
+                finish();
                 startActivity(cons);
                 break;
             case R.id.buttonModifResto:
                 Intent modifR = new Intent(GestionResto.this, ModifierResto.class);
+                IntentStorage.add(modifR, "LoggedUser", loggedUser);
+                finish();
                 startActivity(modifR);
                 break;
             case R.id.buttonSupResto:
                 Intent sup = new Intent(GestionResto.this, SupprimerResto.class);
+                IntentStorage.add(sup, "LoggedUser", loggedUser);
+                finish();
                 startActivity(sup);
                 break;
             case R.id.btnRetour:
-                Intent retourR = new Intent(GestionResto.this, GestionResto.class);
+                Intent retourR = new Intent(GestionResto.this, MenuAdmin.class);
+                IntentStorage.add(retourR, "LoggedUser", loggedUser);
+                finish();
                 startActivity(retourR);
                 break;
         }
     }
 
-    public static class MainMenu extends AppCompatActivity implements View.OnClickListener {
-
-        private ImageView accountIcon;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.main_menu);
-            getSupportActionBar().hide();
-
-            accountIcon = findViewById(R.id.accountIcon);
-
-            accountIcon.setOnClickListener(this);
-        }
-
-        private void showPopup(View v) {
-            PopupMenu popup = new PopupMenu(this, v);
-            MenuInflater inflater = popup.getMenuInflater();
-            inflater.inflate(R.menu.main_option_menu, popup.getMenu());
-            popup.show();
-
-        }
-
-        @Override
-        public void onClick(View view) {
-
-            if (view == accountIcon) {
-                showPopup(view);
-            }
-        }
+    @Override
+    protected void onDestroy() {
+        IntentStorage.remove(getIntent());
+        super.onDestroy();
     }
 }

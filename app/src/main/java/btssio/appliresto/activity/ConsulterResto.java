@@ -18,6 +18,8 @@ import java.util.Calendar;
 import btssio.appliresto.R;
 import btssio.appliresto.modele.Resto;
 import btssio.appliresto.modele.RestoDAO;
+import btssio.appliresto.modele.User;
+import btssio.appliresto.utils.IntentStorage;
 
 public class ConsulterResto extends AppCompatActivity implements View.OnClickListener{
     private TextView adrResto,coordResto,descResto,horairesResto;
@@ -25,6 +27,7 @@ public class ConsulterResto extends AppCompatActivity implements View.OnClickLis
     private Spinner nomResto;
     private ArrayList<Resto> lesRestos;
     private Button retour;
+    private User loggedUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class ConsulterResto extends AppCompatActivity implements View.OnClickLis
         coordResto = (TextView) findViewById(R.id.textViewCoord);
         descResto = (TextView) findViewById(R.id.textViewDescResto);
         horairesResto = (TextView) findViewById(R.id.textViewHorairesResto);
+
+        loggedUser = IntentStorage.get(getIntent(), "LoggedUser");
 
         retour = (Button) findViewById(R.id.btnRetour);
         retour.setOnClickListener(this);
@@ -78,6 +83,8 @@ public class ConsulterResto extends AppCompatActivity implements View.OnClickLis
 
     public void onClick(View v) {
         Intent retour = new Intent(ConsulterResto.this, GestionResto.class);
+        IntentStorage.add(retour, "LoggedUser", loggedUser);
+        finish();
         startActivity(retour);
     }
 }

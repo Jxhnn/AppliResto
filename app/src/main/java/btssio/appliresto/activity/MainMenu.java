@@ -106,7 +106,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener,
 
         if (item.getTitle().equals("Mon compte")) {
             Intent personnalInfosMenu = new Intent(this, PersonnalInfosMenu.class);
-            IntentStorage.add(personnalInfosMenu, "LoggedUser", loggedUser);
+            IntentStorage.add(personnalInfosMenu, "loggedUser", loggedUser);
             startActivity(personnalInfosMenu);
 
         } else if (item.getTitle().equals("Déconnexion")) {
@@ -114,7 +114,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener,
             Intent mainActivity = new Intent(this, MainActivity.class);
             startActivity(mainActivity);
         } else if (item.getTitle().equals("Options")) {
-            Intent userMenu = new Intent(this, MenuUtilisateur.class);
+            Intent userMenu = new Intent(this, MenuAdmin.class);
             IntentStorage.add(userMenu, "LoggedUser", loggedUser);
             startActivity(userMenu);
         }

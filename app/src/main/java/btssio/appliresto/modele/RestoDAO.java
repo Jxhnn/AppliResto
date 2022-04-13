@@ -35,7 +35,7 @@ public class RestoDAO {
         value.put("latitudeDegR",unResto.getLatitudeDegR());
         value.put("longitudeDegR",unResto.getLongitudeDegR());
         value.put("descR",unResto.getDescR());
-        value.put("horaireR",unResto.getHorairesR());
+        value.put("horairesR",unResto.getHorairesR());
 
         ret = bd.insert("Resto", null, value);
         return ret;
@@ -79,6 +79,7 @@ public class RestoDAO {
         SQLiteDatabase bd = accesBD.getWritableDatabase();
         ret= bd.update("resto",resto,"idR="+unResto.getIdR(),null);
         Log.d("1","2");
+        Log.d("UPDATE RESTO:", "SOLE");
         return ret;
     }
 

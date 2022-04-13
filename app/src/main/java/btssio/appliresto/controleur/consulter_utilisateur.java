@@ -1,5 +1,7 @@
 package btssio.appliresto.controleur;
 
+import static btssio.appliresto.holder.RestaurantViewHolder.loggedUser;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import btssio.appliresto.activity.MenuAdmin;
 import btssio.appliresto.modele.User;
 import btssio.appliresto.modele.UserDAO;
+import btssio.appliresto.utils.IntentStorage;
 
 /**
  * Created by mick.souloumiac1 on 22/03/2022.
@@ -27,6 +30,7 @@ public class consulter_utilisateur extends Activity implements View.OnClickListe
     private ArrayList<User> lesUsers=new ArrayList<User>();
     private UserDAO userDao = new UserDAO(this);
     private Button ret;
+    private User loggedUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +57,22 @@ public class consulter_utilisateur extends Activity implements View.OnClickListe
                 i.putExtra("mail",userItem.getMailU());
                 i.putExtra("pseudo", userItem.getPseudoU());
                 Log.d("fnqsdlnd", "klqsjd"+userItem.getPseudoU());
+
+                IntentStorage.add(i, "LoggedUser", loggedUser);
+                finish();
                 startActivity(i);
             }
         });
 
-
+        loggedUser = IntentStorage.get(getIntent(), "LoggedUser");
     }
 
 
     @Override
     public void onClick(View view) {
         Intent i = new Intent(consulter_utilisateur.this, MenuAdmin.class);
+        IntentStorage.add(i, "LoggedUser", loggedUser);
+        finish();
         startActivity(i);
     }
 
