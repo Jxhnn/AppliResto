@@ -143,7 +143,7 @@ public class showRestaurant extends AppCompatActivity implements View.OnClickLis
             IntentStorage.add(mainMenu, "LoggedUser", loggedUser);
             startActivity(mainMenu);
         } else if (view == accountIcon) {
-            btssio.appliresto.utils.PopupMenu.showPopup(view, this);
+            btssio.appliresto.utils.PopupMenu.showPopup(view, this, loggedUser.isAdmin());
         } else if (view == addComment) {
             CritiqueDAO commentManager = new CritiqueDAO(this);
             if (commentManager.alreadyCommented(thisResto.getIdR(), loggedUser.getMailU())) {

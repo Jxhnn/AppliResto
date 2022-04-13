@@ -65,6 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String nickName = userManager.getUsernameFromEmail(thisUser.getMailU());
                 thisUser.setPseudoU(nickName);
 
+                String isAdmin = userManager.getRankFromEmail(thisUser.getMailU());
+
+                if (isAdmin.equals("admin")) thisUser.setAdmin(true);
+                else thisUser.setAdmin(false);
+
                 Intent mainMenu = new Intent(this, MainMenu.class);
                 IntentStorage.add(mainMenu, "LoggedUser", thisUser);
                 startActivity(mainMenu);

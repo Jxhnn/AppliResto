@@ -74,6 +74,17 @@ public class UserDAO {
             curseur.moveToFirst();
             return curseur.getString(0);
         }
+        return "user";
+    }
+
+    public String getRankFromEmail(String email) {
+        User unUser=null;
+        Cursor curseur;
+        curseur=accesBD.getReadableDatabase().rawQuery("select roleU from utilisateur where mailU = '" + email + "';",null);
+        if (curseur.getCount() == 1) {
+            curseur.moveToFirst();
+            return curseur.getString(0);
+        }
         return "Unknown";
     }
 

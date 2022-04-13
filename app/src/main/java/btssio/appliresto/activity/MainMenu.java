@@ -89,7 +89,9 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener,
     public void onClick(View view) {
 
         if (view == accountIcon) {
-            btssio.appliresto.utils.PopupMenu.showPopup(view, this);
+
+            btssio.appliresto.utils.PopupMenu.showPopup(view, this, loggedUser.isAdmin());
+            Log.d("ADMIN", "" + loggedUser.isAdmin());
         }
     }
 

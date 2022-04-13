@@ -80,8 +80,9 @@ public class CommentAdapter extends ArrayAdapter implements View.OnClickListener
         } else {
             holder.userName.setTextColor(Color.rgb(0, 0, 0));
             holder.descComment.setTextColor(Color.rgb(0, 0, 0));
-            holder.deleteComment.setVisibility(View.INVISIBLE);
+            if (!loggedUser.isAdmin()) holder.deleteComment.setVisibility(View.INVISIBLE);
         }
+
 
         if (!holder.deleteComment.hasOnClickListeners()) {
             holder.deleteComment.setOnClickListener(this);

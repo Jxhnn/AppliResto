@@ -33,6 +33,7 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
             + " 	mailU text, "
             + " 	mdpU text, "
             + " 	pseudoU text, "
+            + "     roleU text,"
             + " 	primary key (mailU) "
             + " ); ";
 
@@ -88,11 +89,8 @@ public class BD_SQLiteOpenHelper extends SQLiteOpenHelper{
         Log.d("log","base de test cree");
 
 
-        db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('alex.garat@gmail.com','$1$zvN5IQSdunHF5osT.','@lex');");
-        db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('jj.soueix@gmail.com','$1$zvN5hYMIJqJSDJF.','drskott');");
-        db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('mathieu.capliez@gmail.com','seSzpoUAQgIl.','pich');");
-        db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('nicolas.harispe@gmail.com','$1NDSFQSdfqdfsT.','Nico40');");
-        db.execSQL("insert into utilisateur (mailU,mdpU,pseudoU) values('john@john.com','toto','Toto64000');");
+        db.execSQL("insert into utilisateur (mailU,mdpU, pseudoU, roleU) values('mickael@mickael.com','secretpass64','Mickael09', 'user');");
+        db.execSQL("insert into utilisateur (mailU,mdpU, pseudoU, roleU) values('john@john.com','toto','Toto64000', 'admin');");
 
 
         db.execSQL("insert into resto (idR, nomR, numAdrR, voieAdrR, cpR, villeR, latitudeDegR, longitudeDegR, descR, horairesR, photoPrincipal) values(1, 'lentrepote', '2', 'rue Maurice Ravel', 33000, 'Bordeaux', 44.7948, -0.58754, 'description','11h45||14h30 18h||22h', 'https://d1ralsognjng37.cloudfront.net/fd881b26-99d1-45d3-9517-d1177e9e0028.jpeg');");

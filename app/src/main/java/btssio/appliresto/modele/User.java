@@ -9,6 +9,7 @@ public class User {
     private String mailU;
     private String mdpU;
     private String pseudoU;
+    private boolean admin;
 
     public User(String mailU, String pseudoU) {
         this.mailU = mailU;
@@ -53,5 +54,11 @@ public class User {
                 '}';
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
 
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 }
