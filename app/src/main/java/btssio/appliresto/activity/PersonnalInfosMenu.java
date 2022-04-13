@@ -35,7 +35,7 @@ public class PersonnalInfosMenu extends AppCompatActivity implements View.OnClic
         modifyButton = findViewById(R.id.modifyButton);
         backIcon = findViewById(R.id.backIcon);
 
-        loggedUser = IntentStorage.get(getIntent(), "LoggedUser");
+        loggedUser = IntentStorage.get(getIntent(), "loggedUser");
         editTextEmail.setText(loggedUser.getMailU());
         editTextNickname.setText(loggedUser.getPseudoU());
 

@@ -33,7 +33,7 @@ import btssio.appliresto.utils.WebUtils;
 public class showRestaurant extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
     private TextView titreResto, descResto, globalNote, commentNumber, scheduleRestaurant, addressResto;
-    private ImageView imageViewResto, globalNoteIcon, backButtonShow, accountIcon;
+    private ImageView imageViewResto, globalNoteIcon, backButtonShow;
     private Button addComment;
     private Resto thisResto;
     private User loggedUser;
@@ -59,14 +59,12 @@ public class showRestaurant extends AppCompatActivity implements View.OnClickLis
         backButtonShow = findViewById(R.id.backButtonShow);
         scheduleRestaurant = findViewById(R.id.scheduleResto);
         addressResto = findViewById(R.id.addressResto);
-        accountIcon = findViewById(R.id.accountIcon);
         addComment = findViewById(R.id.addComment);
 
         globalNoteIcon.getLayoutParams().height = 50;
         globalNoteIcon.getLayoutParams().width = 50;
 
         backButtonShow.setOnClickListener(this);
-        accountIcon.setOnClickListener(this);
         addComment.setOnClickListener(this);
 
         thisResto = IntentStorage.get(getIntent(), "thisResto");
@@ -143,8 +141,6 @@ public class showRestaurant extends AppCompatActivity implements View.OnClickLis
             IntentStorage.add(mainMenu, "LoggedUser", loggedUser);
             finish();
             startActivity(mainMenu);
-        } else if (view == accountIcon) {
-            btssio.appliresto.utils.PopupMenu.showPopup(view, this, loggedUser.isAdmin());
         } else if (view == addComment) {
             CritiqueDAO commentManager = new CritiqueDAO(this);
             if (commentManager.alreadyCommented(thisResto.getIdR(), loggedUser.getMailU())) {
